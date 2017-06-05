@@ -1,0 +1,146 @@
+```{r parameters_to_plot, echo=FALSE}
+plot_lowcount   = 'low_count_threshold' %in% colnames(df) && length(unique(df$low_count_threshold)) > 1
+plot_cpm        = 'cpm_transform'       %in% colnames(df) && length(unique(df$cpm_transform)) > 1
+plot_log2       = 'log2_transform'      %in% colnames(df) && length(unique(df$log2_transform)) > 1
+plot_qnorm      = 'quantile_normalize'  %in% colnames(df) && length(unique(df$quantile_normalize)) > 1
+plot_voom       = 'voom_transform'      %in% colnames(df) && length(unique(df$voom_transform)) > 1
+plot_batch_adj  = 'batch_adjustment'    %in% colnames(df) && length(unique(df$batch_adjustment)) > 1
+plot_simmeas    = 'similarity_measure'  %in% colnames(df) && length(unique(df$similarity_measure)) > 1
+plot_adjpow     = 'adj_power'           %in% colnames(df) && length(unique(df$adj_power)) > 1
+plot_tom        = 'topological_overlap' %in% colnames(df) && length(unique(df$topological_overlap)) > 1
+plot_mergecor   = 'merge_cor'           %in% colnames(df) && length(unique(df$merge_cor)) > 1
+```
+
+```{r cpm_transformation, results='asis', echo=FALSE, include=plot_cpm, eval=plot_cpm}
+cat('\n**CPM-transformation**\n')
+
+if (plot_simmeas) {
+    ggplot(df, aes(cpm_transform, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('CPM-transformation') + ylab('Enrichment score')
+        #guides(ifelse(plot_simmeas, guide_legend(title="Similarity Measure"), FALSE))
+}
+
+# sample plot, but just considering CPM differences
+ggplot(df, aes(cpm_transform, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(cpm_transform))) +
+    xlab('CPM-transformation') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+
+```
+
+
+```{r log_transformation, results='asis', echo=FALSE, include=plot_log2, eval=plot_log2}
+cat('\n**Log-transformation**\n')
+
+if (plot_simmeas) {
+    ggplot(df, aes(log2_transform, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Log2-transformation') + ylab('Enrichment score')
+        #guides(ifelse(plot_simmeas, guide_legend(title="Similarity Measure"), FALSE))
+}
+
+ggplot(df, aes(log2_transform, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(log2_transform))) +
+    xlab('Log2-transformation') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+```
+
+
+```{r voom_transformation, results='asis', echo=FALSE, include=plot_voom, eval=plot_voom}
+cat('\n**Voom-transformation**\n')
+
+if (plot_simmeas) {
+    ggplot(df, aes(voom_transform, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Voom-transformation') + ylab('Enrichment score')
+        #guides(ifelse(plot_simmeas, guide_legend(title="Similarity Measure"), FALSE))
+}
+
+ggplot(df, aes(voom_transform, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(voom_transform))) +
+    xlab('Voom-transformation') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+```
+
+```{r quantile_normalize, results='asis', echo=FALSE, include=plot_qnorm, eval=plot_qnorm}
+cat('\n**Quantile normalization**\n')
+if (plot_simmeas) {
+    ggplot(df, aes(quantile_normalize, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Quantile normalization') + ylab('Enrichment score')
+}
+
+ggplot(df, aes(quantile_normalize, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(quantile_normalize))) +
+    xlab('Quantile normalization') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+```
+
+```{r batch_adjustment, results='asis', echo=FALSE, include=plot_batch_adj, eval=plot_batch_adj}
+cat('\n**Batch adjustment**\n')
+if (plot_simmeas) {
+    ggplot(df, aes(batch_adjustment, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Batch Adjustment Method') + ylab('Enrichment score')
+}
+ggplot(df, aes(batch_adjustment, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(batch_adjustment))) +
+    xlab('Batch Adjustment Method') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+```
+
+```{r similarity_measure, dpi=300, results='asis', echo=FALSE, include=plot_simmeas, eval=plot_simmeas}
+cat('\n**Similarity measure**\n')
+ggplot(df, aes(similarity_measure, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(similarity_measure))) +
+    xlab('Similarity Measure') + ylab('Enrichment score') +
+    theme(text=element_text(size=16),
+          axis.text=element_text(size=16),
+          axis.text.x=element_text(angle=90, hjust=1),
+          legend.text=element_text(size=16),
+          plot.margin=unit(c(0.5, 0.5, 0.5, 0.5),"cm")) +
+    guides(ifelse(plot_simmeas, guide_legend(title="Similarity Measure"), FALSE)) +
+    scale_fill_discrete(name='Similarity Measure')
+```
+
+```{r adjpower, results='asis', echo=FALSE, include=plot_adjpow, eval=plot_adjpow}
+cat('\n**Adjacency power**\n')
+ggplot(df, aes(factor(adj_power), enrichment_score)) + 
+    geom_boxplot() +
+    xlab('Adjacency power') + ylab('Enrichment score')
+```
+
+```{r topological_overlap, results='asis', echo=FALSE, include=plot_tom, eval=plot_tom}
+cat('\n**Topological overlap**\n')
+if (plot_simmeas) {
+    ggplot(df, aes(topological_overlap, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Topological overlap') + ylab('Enrichment score')
+}
+ggplot(df, aes(topological_overlap, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(topological_overlap))) +
+    xlab('Topological overlap') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+```
+
+```{r merge_cor, results='asis', echo=FALSE, include=plot_mergecor, eval=plot_mergecor}
+cat('\n**Merge correlation**\n')
+ggplot(df, aes(factor(merge_cor), enrichment_score)) + 
+    geom_boxplot() +
+    xlab('Merge correlation') + ylab('Enrichment score')
+```
+
+```{r adjpower_vs_merge_cor, results='asis', echo=FALSE, include=plot_mergecor, eval=plot_mergecor}
+cat('\n**Adjacency power vs. Merge correlation (total)**\n')
+ggplot(df, aes(merge_cor, adj_power)) + 
+    geom_tile(aes(fill=enrichment_score_total)) +
+    scale_fill_gradient(low="green", high="red")
+```
+
+```{r adjpower_vs_merge_cor_unique, results='asis', echo=FALSE, include=plot_mergecor, eval=plot_mergecor}
+cat('\n**Adjacency power vs. Merge correlation (unique)**\n')
+ggplot(df, aes(merge_cor, adj_power)) + 
+    geom_tile(aes(fill=enrichment_score)) +
+    scale_fill_gradient(low="green", high="red")
+```

@@ -1,0 +1,47 @@
+```{r remove_uneeded_params}
+# save parameters used for network construction
+cpm_transform  <- df$cpm_transform[1]
+log2_transform <- df$log2_transform[1]
+quantile_normalize <- df$quantile_normalize[1]
+limma_batch <- df$limma_batch[1]
+similarity_measure <- df$similarity_measure[1]
+adj_power <- df$adj_power[1]  
+
+# remove uneeded parameters
+df = df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
+
+# remove networks constructed using euclidean distance
+df <- df %>% filter(similarity_measure != 'dist')
+```
+
+**Parameters tested:**
+
+```{r params_tested_pathogen}
+print(cpm_transform)
+print(log2_transform)
+print(quantile_normalize)
+print(limma_batch)
+print(similarity_measure)
+print(adj_power)
+```
+
+```{r extend_parasite_results}
+# total enrichment
+df$total_enriched = df$go_total_enriched + df$kegg_total_enriched
+df$total_enriched_unique = df$unique_go_terms + df$unique_kegg_terms
+
+df$enrichment_score = 1/2 * (scale(df$unique_go_terms) +
+                             scale(df$unique_kegg_terms))
+df$enrichment_score_total = 1/2 * (scale(df$go_total_enriched) +
+                                   scale(df$kegg_total_enriched))
+
+# rename network id column
+colnames(df)[1] <- 'network_id'
+
+# sort by enrichment score and add a rank column
+df <- df %>% arrange(desc(enrichment_score))
+df$rank <- 1:nrow(df)
+
+# show rank column at left
+df <- df[,c(ncol(df), 1:(ncol(df) - 1))]
+```

@@ -1,0 +1,36 @@
+```{r remove_uneeded_params}
+# remove uneeded parameters
+df = df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
+```
+
+**Parameters tested:**
+
+```{r params_tested_pathogen}
+table(df$cpm_transform)
+table(df$log2_transform)
+table(df$quantile_normalize)
+table(df$batch_adjustment)
+table(df$similarity_measure)
+table(df$adj_power)
+```
+
+```{r extend_parasite_results}
+# total enrichment
+df$total_enriched = df$go_total_enriched + df$kegg_total_enriched
+df$total_enriched_unique = df$unique_go_terms + df$unique_kegg_terms
+
+df$enrichment_score = as.numeric(1/2 * (scale(df$unique_go_terms) +
+                                scale(df$unique_kegg_terms)))
+df$enrichment_score_total = as.numeric(1/2 * (scale(df$go_total_enriched) +
+                                       scale(df$kegg_total_enriched)))
+
+# rename network id column
+colnames(df)[1] <- 'network_id'
+
+# sort by enrichment score and add a rank column
+df <- df %>% arrange(desc(enrichment_score))
+df$rank <- 1:nrow(df)
+
+# show rank column at left
+df <- df[,c(ncol(df), 1:(ncol(df) - 1))]
+```

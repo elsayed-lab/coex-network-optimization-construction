@@ -1,0 +1,284 @@
+---
+title: "Co-expression Network Analysis Parameter Optimization (v6)"
+author: V. Keith Hughitt
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float: true
+    number_sections: true
+  pdf_document:
+    toc: true
+    latex_engine: xelatex
+---
+
+```{r echo=FALSE}
+# Clean up any existing variables
+rm(list=ls())
+```
+
+Introduction
+============
+
+Overview
+--------
+
+The purpose of this analysis is to test out a range of parameters for
+co-expression network construction in order to help find some reasonable values
+to use for downstream network analysis.
+
+The basic approach used here is to construct multiple networks with varying
+parameters (typically in combinations less than ~1000 or so to avoid taxing the
+cluster), and for each network, determine how many enriched GO terms are
+observed for each resulting module in the network, and what is the average
+p-value of the GO terms. Networks which result in significantly more enrichment
+with lower p-values may then be considered more "optimal" or more realistic. Of
+course, one must also keep in mind that when testing large numbers of networks,
+it is always possible that you can generate seemingly real modules by chance,
+and also that even if one set of parameters is optimal relative to the eithers,
+there is no guarantee that it is the global optimal.
+
+Parameters Tested
+-----------------
+
+For each dataset, all possible combinations of the following parameters will be
+tested:
+
+- Counts-per-million (CPM) transformation (TRUE|FALSE)
+- Log2 transformation (TRUE|FALSE)
+- Quantile normalization (TRUE|FALSE)
+- Batch adjustment (limma|combat|none)
+- Similarity Measure (pearson correlation, spearman correlation, biweight
+  mid-correlation, cor-dist)
+- Adjacency power (1-14)
+
+This will result in a total of 448 networks per dataset.
+
+Changelog
+---------
+
+### v6
+
+- Including GO ancestor terms in enrichment analysis
+- Updated human reference annotations from Ensembl 83 -> 88
+- Updated TriTrypDB from 27 -> 32
+- Updated Bioconductor from 3.2 -> 3.5
+
+### v5
+
+- Fixed an issue with HTSeq causing many reads to be double-counted.
+- Improved computation of gene lengths for Human/Mouse.
+- Updated human reference annotations from Ensembl 76 -> 83
+- Updated TriTrypDB from 25 -> 27
+- Updated Bioconductor from 3.1 -> 3.2
+
+### v4
+
+- Added differential-expression-based filtering of genes for host and parasite
+  and multicopy gene family filtering for *T. cruzi* and *L. major*.
+
+### v3
+
+- Updated TriTrypDB to version 25
+- Quantile normalization performed before log2 transformation
+- When `similarity_measure='dist'`, Euclidean distance is used directly for
+  dissimilarity matrix instead of converting to an intermediate similarity
+  matrix first.
+
+### v2
+
+- Updated TriTrypDB to version 24
+- Gene/module mapping saved for each network generated
+- No longer testing voom, topological_overlap, low_count_threshold, and
+  merge_cor; the later two can be separately optimized after all other
+  parameters have been optimized.
+
+Results
+=======
+
+Setup
+-----
+
+```{r load_libraries}
+library('dplyr')
+library('ggplot2')
+library('knitr')
+library('reshape2')
+source('../00-shared/R/util.R')
+
+# knitr preferences
+opts_chunk$set(fig.width=768/96,
+               fig.height=480/96,
+               dpi=96)
+options(digits=4)
+options(stringsAsFactors=FALSE)
+options(knitr.duplicate.label='allow')
+
+# number of high-scoring entries to display in table output
+num_rows_to_display = 15 
+```
+
+*H .sapiens* Body Map multi-tissue network
+------------------------------------------
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/illumina_bodymap-v5.0.csv'))
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*H. sapiens* infected with *L. braziliensis*
+--------------------------------------------
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v5.0.csv'))
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+
+*H. sapiens* infected with *T. cruzi* (intracellular)
+-----------------------------------------------------
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/hsapiens_infected_with_tcruzi-v5.0.csv'))
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*H. sapiens* infected with *L. major* (intracellular)
+-----------------------------------------------------
+
+### General
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/hsapiens_infected_with_lmajor-v5.0.csv'))
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*L. major* infecting *H. sapiens* (intracellular)
+--------------------------------------------------
+
+### General
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/lmajor_infecting_hsapiens-v5.0.csv'))
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*T. cruzi* infecting *H. sapiens* (intracellular)
+-------------------------------------------------
+
+### General
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/tcruzi_infecting_hsapiens-v5.0.csv'))
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+
+ModENCODE - Fly
+---------------
+
+### General
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/modencode_fly-v5.0.csv'))
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+ModENCODE - Worm
+----------------
+
+### General
+
+```{r load_data}
+df = tbl_df(read.csv('output/normal/modencode_worm-v5.0.csv'))
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+System Information
+------------------
+
+```{r sysinfo}
+sessionInfo()
+date()
+```

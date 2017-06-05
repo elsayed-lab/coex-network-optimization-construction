@@ -1,0 +1,6 @@
+**Configurations with the most highly-enriched modules (GO/KEGG)**
+
+```{r highly_enriched, results='asis'}
+# remove static fields
+xkable(df %>% arrange(desc(enrichment_score)), num_rows_to_display)
+```

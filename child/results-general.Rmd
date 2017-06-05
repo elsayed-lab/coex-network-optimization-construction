@@ -1,0 +1,21 @@
+#### Enrichment correlates with number of modules
+
+This is likely do at least in part to how terms being double-counted when a
+single module is split in two, and possibly also to a higher probability for
+false positives for modules with very few genes.
+
+```{r module_size_trends}
+ggplot(df, aes(num_modules, total_enriched, colour=factor(merge_cor))) + 
+    geom_point() + geom_smooth()
+
+```
+
+#### GO vs. KEGG enrichment
+
+GO and KEGG enrichment levels are positively correlated.
+
+```{r go_vs_kegg_enrichment}
+ggplot(df, aes(go_total_enriched, kegg_total_enriched)) + 
+    geom_point() +
+    geom_smooth(method='lm')
+```

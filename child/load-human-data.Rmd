@@ -3,12 +3,13 @@
 df <- df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
 
 # remove networks constructed using euclidean distance
-df <- df %>% filter(similarity_measure != 'dist')
+#df <- df %>% filter(similarity_measure != 'dist')
 ```
 
 **Parameters tested:**
 
 ```{r params_tested_pathogen}
+table(df$network_type)
 table(df$cpm_transform)
 table(df$log2_transform)
 table(df$quantile_normalize)

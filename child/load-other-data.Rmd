@@ -6,6 +6,7 @@ df = df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
 **Parameters tested:**
 
 ```{r params_tested_pathogen}
+table(df$network_type)
 table(df$cpm_transform)
 table(df$log2_transform)
 table(df$quantile_normalize)

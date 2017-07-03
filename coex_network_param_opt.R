@@ -152,6 +152,12 @@ if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) 
     }
 }
 
+# L. major specific results
+if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
+    # LeishCyc
+    knit('../00-shared/Rmd/results/leishcyc_enrichment.Rmd', quiet=TRUE, output=tempfile())
+}
+
 # Summarize module annotation enrichment
 go_summary <- summarize_enrichment_result(module_go_enrichment)
 kegg_summary <- summarize_enrichment_result(module_kegg_enrichment)
@@ -202,6 +208,14 @@ if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) 
     }
 }
 
+# For L. major, include LeishCyc results
+if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
+        leishcyc_summary <- summarize_enrichment_result(leishcyc_pathway_enrichment)
+        entries <- append(entries,
+                         c(leishcyc_summary$total_categories, leishcyc_summary$unique_categories,
+                           leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval))
+}
+
 # Output results table entry
 output_row <- paste0(paste(entries, collapse=','), '\n')
 cat(output_row, file=outfile, sep='')
@@ -216,7 +230,7 @@ save(module_mapping, file=module_assignments_file)
 # Save rounded adjacency matrix
 # 2016/09/12 - disabling until explicitly needed (requires significant storage)
 #adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)
-#adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 3)
+#adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 2)
 #save(adjacency_matrix, file=adjacency_matrix_file)
 
 print("Results:")

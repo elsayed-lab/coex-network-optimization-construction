@@ -101,10 +101,12 @@ Setup
 -----
 
 ```{r load_libraries}
+library('DT')
 library('dplyr')
 library('ggplot2')
 library('knitr')
 library('reshape2')
+library('readr')
 source('../00-shared/R/util.R')
 
 # knitr preferences
@@ -116,51 +118,15 @@ options(stringsAsFactors=FALSE)
 options(knitr.duplicate.label='allow')
 
 # number of high-scoring entries to display in table output
-num_rows_to_display = 15 
+num_rows_to_display <- 15 
 ```
-
-*H .sapiens* Body Map multi-tissue network
-------------------------------------------
-
-```{r load_data}
-df = tbl_df(read.csv('output/normal/illumina_bodymap-v5.0.csv'))
-```
-
-```{r child='child/load-human-data.Rmd'}
-```
-
-### All networks
-
-```{r child='child/results-summary-tables-host.Rmd'}
-```
-
-```{r child='child/results-plots.Rmd'}
-```
-
-*H. sapiens* infected with *L. braziliensis*
---------------------------------------------
-
-```{r load_data}
-df = tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v5.0.csv'))
-```
-
-```{r child='child/load-human-data.Rmd'}
-```
-
-### All networks
-
-```{r child='child/results-summary-tables-host.Rmd'}
-```
-
-```{r child='child/results-plots.Rmd'}
-```
-
 
 *H. sapiens* infected with *T. cruzi* (intracellular)
 -----------------------------------------------------
 
 ```{r load_data}
-df = tbl_df(read.csv('output/normal/hsapiens_infected_with_tcruzi-v5.0.csv'))
+df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-v6.0.csv') %>%
+    filter(network_type == 'signed')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -180,7 +146,8 @@ df = tbl_df(read.csv('output/normal/hsapiens_infected_with_tcruzi-v5.0.csv'))
 ### General
 
 ```{r load_data}
-df = tbl_df(read.csv('output/normal/hsapiens_infected_with_lmajor-v5.0.csv'))
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.0.csv') %>% 
+    filter(network_type == 'signed')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -194,13 +161,35 @@ df = tbl_df(read.csv('output/normal/hsapiens_infected_with_lmajor-v5.0.csv'))
 ```{r child='child/results-plots.Rmd'}
 ```
 
+*L. major* infecting *M. musculus* (intracellular)
+--------------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/lmajor_infecting_mmusculus-v6.0.csv') %>% 
+    filter(network_type == 'signed')
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
 *L. major* infecting *H. sapiens* (intracellular)
 --------------------------------------------------
 
 ### General
 
 ```{r load_data}
-df = tbl_df(read.csv('output/normal/lmajor_infecting_hsapiens-v5.0.csv'))
+df <- read_csv('output/normal/lmajor_infecting_hsapiens-v6.0.csv') %>% 
+    filter(network_type == 'signed')
 ```
 
 ```{r child='child/load-other-data.Rmd'}
@@ -220,48 +209,8 @@ df = tbl_df(read.csv('output/normal/lmajor_infecting_hsapiens-v5.0.csv'))
 ### General
 
 ```{r load_data}
-df = tbl_df(read.csv('output/normal/tcruzi_infecting_hsapiens-v5.0.csv'))
-```
-
-```{r child='child/load-other-data.Rmd'}
-```
-
-### All networks
-
-```{r child='child/results-summary-tables-other.Rmd'}
-```
-
-```{r child='child/results-plots.Rmd'}
-```
-
-
-ModENCODE - Fly
----------------
-
-### General
-
-```{r load_data}
-df = tbl_df(read.csv('output/normal/modencode_fly-v5.0.csv'))
-```
-
-```{r child='child/load-other-data.Rmd'}
-```
-
-### All networks
-
-```{r child='child/results-summary-tables-other.Rmd'}
-```
-
-```{r child='child/results-plots.Rmd'}
-```
-
-ModENCODE - Worm
-----------------
-
-### General
-
-```{r load_data}
-df = tbl_df(read.csv('output/normal/modencode_worm-v5.0.csv'))
+df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.0.csv') %>%
+    filter(network_type == 'signed')
 ```
 
 ```{r child='child/load-other-data.Rmd'}

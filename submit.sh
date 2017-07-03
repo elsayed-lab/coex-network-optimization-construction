@@ -10,6 +10,8 @@
 # - Updated TriTrypDB from 27 -> 32
 # - Updated Bioconductor from 3.2 -> 3.5
 # - Updated human reference annotations from Ensembl 83 -> 88
+# - Using Marbach TF regulon dataset in place of ENCODE regulon data for human
+# - Added LeishCyc enrichment analysis for L. major
 #
 # v5.0
 # ----
@@ -37,6 +39,7 @@
 
 # Qsub parameters
 #export QSUB_PARAMS="-q workstation -l mem=46gb,ncpus=32,walltime=32:00:00"
+#export QSUB_PARAMS="-q workstation -l mem=46gb,ncpus=4,walltime=32:00:00"
 export QSUB_PARAMS="-q throughput -l mem=36gb,ncpus=12,walltime=18:00:00"
 
 # Base network construction settings to use
@@ -53,7 +56,7 @@ export PAUSE_TIME_IN_SECS=600
 start_i=1
 
 # Parameters to test
-export NET_TYPE="signed unsigned"
+export NET_TYPE="signed"
 export LOW_COUNT_THRESHOLD="1"
 export CPM="false true"
 export LOG2="false true"

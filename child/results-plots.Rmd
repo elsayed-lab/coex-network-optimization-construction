@@ -1,14 +1,32 @@
 ```{r parameters_to_plot, echo=FALSE}
-plot_lowcount   = 'low_count_threshold' %in% colnames(df) && length(unique(df$low_count_threshold)) > 1
-plot_cpm        = 'cpm_transform'       %in% colnames(df) && length(unique(df$cpm_transform)) > 1
-plot_log2       = 'log2_transform'      %in% colnames(df) && length(unique(df$log2_transform)) > 1
-plot_qnorm      = 'quantile_normalize'  %in% colnames(df) && length(unique(df$quantile_normalize)) > 1
-plot_voom       = 'voom_transform'      %in% colnames(df) && length(unique(df$voom_transform)) > 1
-plot_batch_adj  = 'batch_adjustment'    %in% colnames(df) && length(unique(df$batch_adjustment)) > 1
-plot_simmeas    = 'similarity_measure'  %in% colnames(df) && length(unique(df$similarity_measure)) > 1
-plot_adjpow     = 'adj_power'           %in% colnames(df) && length(unique(df$adj_power)) > 1
-plot_tom        = 'topological_overlap' %in% colnames(df) && length(unique(df$topological_overlap)) > 1
-plot_mergecor   = 'merge_cor'           %in% colnames(df) && length(unique(df$merge_cor)) > 1
+plot_nettype   <- 'network_type'        %in% colnames(df) && length(unique(df$network_type)) > 1
+plot_lowcount  <- 'low_count_threshold' %in% colnames(df) && length(unique(df$low_count_threshold)) > 1
+plot_cpm       <- 'cpm_transform'       %in% colnames(df) && length(unique(df$cpm_transform)) > 1
+plot_log2      <- 'log2_transform'      %in% colnames(df) && length(unique(df$log2_transform)) > 1
+plot_qnorm     <- 'quantile_normalize'  %in% colnames(df) && length(unique(df$quantile_normalize)) > 1
+plot_voom      <- 'voom_transform'      %in% colnames(df) && length(unique(df$voom_transform)) > 1
+plot_batch_adj <- 'batch_adjustment'    %in% colnames(df) && length(unique(df$batch_adjustment)) > 1
+plot_simmeas   <- 'similarity_measure'  %in% colnames(df) && length(unique(df$similarity_measure)) > 1
+plot_adjpow    <- 'adj_power'           %in% colnames(df) && length(unique(df$adj_power)) > 1
+plot_tom       <- 'topological_overlap' %in% colnames(df) && length(unique(df$topological_overlap)) > 1
+plot_mergecor  <- 'merge_cor'           %in% colnames(df) && length(unique(df$merge_cor)) > 1
+```
+
+```{r network_type, results='asis', echo=FALSE, include=plot_nettype, eval=plot_nettype}
+cat('\n**Network Type**\n')
+
+if (plot_simmeas) {
+    ggplot(df, aes(network_type, enrichment_score)) + 
+        geom_boxplot(aes(fill=factor(similarity_measure))) +
+        xlab('Network Type') + ylab('Enrichment score')
+}
+
+# sample plot, but just considering network type
+ggplot(df, aes(network_type, enrichment_score)) + 
+    geom_boxplot(aes(fill=factor(network_type))) +
+    xlab('Network Type') + ylab('Enrichment score') +
+    guides(guide_legend(FALSE))
+
 ```
 
 ```{r cpm_transformation, results='asis', echo=FALSE, include=plot_cpm, eval=plot_cpm}

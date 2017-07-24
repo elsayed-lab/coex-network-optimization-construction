@@ -45,16 +45,6 @@ export QSUB_PARAMS="-q throughput -l mem=36gb,ncpus=12,walltime=18:00:00"
 # Base network construction settings to use
 export WORKING_DIR=$(pwd)
 
-# Maximum number of jobs to run when using qsub/parallel
-export MAX_JOBS_PARALLEL=1
-export MAX_JOBS_QSUB=35
-
-# Time to wait between submitting batches of jobs on qsub
-export PAUSE_TIME_IN_SECS=600
-
-# Counter start
-start_i=1
-
 # Parameters to test
 export NET_TYPE="signed"
 export LOW_COUNT_THRESHOLD="1"
@@ -75,6 +65,21 @@ datestr=$(date +'%Y%m%d%H%M%S')
 # used to filter results from qstat
 export QUEUE=$(echo $QSUB_PARAMS| egrep -o "\-q ([a-z]+)" | cut -c 4- | cut -c -8)
 
+# Maximum number of jobs to run when using qsub/parallel
+export MAX_JOBS_PARALLEL=1
+
+if [[ "$QUEUE" == "workstat" ]]; then
+    export MAX_JOBS_QSUB=5
+else
+    export MAX_JOBS_QSUB=35
+fi
+
+# Time to wait between submitting batches of jobs on qsub
+export PAUSE_TIME_IN_SECS=600
+
+# Counter start
+start_i=1
+
 #
 # Settings choices:
 #
@@ -87,6 +92,9 @@ export QUEUE=$(echo $QSUB_PARAMS| egrep -o "\-q ([a-z]+)" | cut -c 4- | cut -c -
 #  mmlm - Mouse infected with L. major
 #  lmall - L. major all samples 
 #  tcall - T. cruzi all samples 
+#  bodymap - Illumina Bodymap
+#  modencode-worm - ModEncode Worm
+#  modencode-fly - ModEncode Fly
 #
 if [[ "$1" == "lmmm" ]]; then
     # L. major / M. musculus
@@ -125,8 +133,16 @@ elif [[ "$1" == "hslm" ]]; then
     export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.0.Rmd"
     export JOB_NAME="human_lmajor_param_opt-$datestr"
     export SUBDIR="normal/hsapiens_infected_with_lmajor-v6.0"
+elif [[ "$1" == "hslm-full" ]]; then
+    # H. sapiens / L. major (including TOM, signed/unsigned nets)
+    echo "Optimizing network construction for H. sapiens infected with L. major"
+    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.0.Rmd"
+    export JOB_NAME="human_lmajor_param_opt-$datestr"
+    export SUBDIR="normal/hsapiens_infected_with_lmajor-full-v6.0"
+    export NET_TYPE="signed unsigned"
+    export TOPOLOGICAL_OVERLAP="false true"
 elif [[ "$1" == "hstc" ]]; then
-    # H. sapiens / L. major
+    # H. sapiens / T. cruzi
     echo "Optimizing network construction for H. sapiens infected with T. cruzi"
     export SETTINGS_FILE="${RESEARCH}/2015/13-coex-network-hsapiens-infected-with-tcruzi/settings/hsapiens_intracellular-v6.0.Rmd"
     export JOB_NAME="human_tcruzi_param_opt-$datestr"

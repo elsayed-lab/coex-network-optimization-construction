@@ -37,10 +37,10 @@
 # - Added cor-dist and signed-dist similarity measures
 #
 
-# Qsub parameters
-#export QSUB_PARAMS="-q workstation -l mem=46gb,ncpus=32,walltime=32:00:00"
-#export QSUB_PARAMS="-q workstation -l mem=46gb,ncpus=4,walltime=32:00:00"
-export QSUB_PARAMS="-q throughput -l mem=36gb,ncpus=12,walltime=18:00:00"
+# Slurm parameters
+#export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=32,walltime=32:00:00"
+#export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=4,walltime=32:00:00"
+export SBATCH_PARAMS="--qos=throughput --mem=3600 --ntasks-per-node=12 --time=0-18:00:00"
 
 # Base network construction settings to use
 export WORKING_DIR=$(pwd)
@@ -62,19 +62,19 @@ export MERGE_COR="1.0"
 datestr=$(date +'%Y%m%d%H%M%S')
 
 # first eight chracters of queue name 
-# used to filter results from qstat
-export QUEUE=$(echo $QSUB_PARAMS| egrep -o "\-q ([a-z]+)" | cut -c 4- | cut -c -8)
+# used to filter results from squeue
+export QUEUE=$(echo $SBATCH_PARAMS| egrep -o "\-qos=([a-z]+)" | cut -c 6- | cut -c -8)
 
-# Maximum number of jobs to run when using qsub/parallel
+# Maximum number of jobs to run when using sbatch/parallel
 export MAX_JOBS_PARALLEL=1
 
 if [[ "$QUEUE" == "workstat" ]]; then
-    export MAX_JOBS_QSUB=5
+    export MAX_JOBS_SBATCH=5
 else
-    export MAX_JOBS_QSUB=35
+    export MAX_JOBS_SBATCH=35
 fi
 
-# Time to wait between submitting batches of jobs on qsub
+# Time to wait between submitting batches of jobs on sbatch
 export PAUSE_TIME_IN_SECS=600
 
 # Counter start
@@ -206,7 +206,7 @@ fi
 
 # Check for cluster availability
 # If not found, will fall back on GNU parallel
-export USE_CLUSTER=$(type qsub &>/dev/null && echo "true" || echo "false") 
+export USE_CLUSTER=$(type sbatch &>/dev/null && echo "true" || echo "false") 
 
 # Maximum number of threads to use per job
 if [[ $USE_CLUSTER == true ]]; then
@@ -244,7 +244,7 @@ for p0 in $NET_TYPE; do
                                                 continue
                                             fi
 
-                                            # Make parameters visible to qsub
+                                            # Make parameters visible to sbatch
                                             export p0 p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
 
                                             LOG="${LOGDIR}/${i}.log"
@@ -273,21 +273,25 @@ for p0 in $NET_TYPE; do
                                             #fi
 
                                             if [[ "$SKIP_JOB" == false ]]; then
-                                                # Submit job (qsub)
+                                                # Submit job (sbatch)
                                                 echo "Submitting job $i..."
 
                                                 if [[ "$USE_CLUSTER" == true ]]; then
-                                                    cat <<"EOF" | qsub $QSUB_PARAMS \
-                                                                    -N "param.opt.${i}" -V -m n \
-                                                                    -j eo -w $WORKING_DIR -e $LOG -
+                                                    #cat <<"EOF" | sbatch $SBATCH_PARAMS \
+                                                    #                -N "param.opt.${i}" --mail-type=NONE \
+                                                    #                -D $WORKING_DIR -o $LOG -
+                                                    sbatch $SBATCH_PARAMS \
+                                                                    -J "param.opt.${i}" --mail-type=NONE \
+                                                                    -D $WORKING_DIR -o $LOG <<"EOF"
+#!/usr/bin/env bash
 #------------------------------------------------------------------------------
-# START QSUB SCRIPT
+# START SBATCH SCRIPT
 #------------------------------------------------------------------------------
 echo $cmd
 eval $cmd
 EOF
 #------------------------------------------------------------------------------
-# END QSUB SCRIPT
+# END SBATCH SCRIPT
 #------------------------------------------------------------------------------
                                                 else
                                                     # Submit job (parallel)
@@ -316,12 +320,12 @@ EOF
                                             if [[ "$USE_CLUSTER" == true ]]; then
                                                 if [[ $i -gt $min_i ]]; then
                                                     # Get the number of currently queued/running jobs
-                                                    num_jobs=$(qstat -u $USER | grep param | grep $QUEUE | wc -l)
+                                                    num_jobs=$(squeue --user=$USER | grep param | grep $QUEUE | wc -l)
 
-                                                    while [[ $num_jobs -ge $MAX_JOBS_QSUB ]]; do
+                                                    while [[ $num_jobs -ge $MAX_JOBS_SBATCH ]]; do
                                                         printf "Pausing for %d seconds...\n" $PAUSE_TIME_IN_SECS
                                                         sleep $PAUSE_TIME_IN_SECS
-                                                        num_jobs=$(qstat -u $USER | grep param | grep $QUEUE | wc -l)
+                                                        num_jobs=$(squeue --user=$USER | grep param | grep $QUEUE | wc -l)
                                                     done
                                                 fi
                                             fi

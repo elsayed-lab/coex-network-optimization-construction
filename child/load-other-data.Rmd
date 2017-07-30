@@ -1,6 +1,6 @@
 ```{r remove_uneeded_params}
 # remove uneeded parameters
-df = df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
+df <- df[,apply(df, 2, function(x) { length(unique(x)) > 1 })]
 ```
 
 **Parameters tested:**
@@ -17,12 +17,12 @@ table(df$adj_power)
 
 ```{r extend_parasite_results}
 # total enrichment
-df$total_enriched = df$go_total_enriched + df$kegg_total_enriched
-df$total_enriched_unique = df$unique_go_terms + df$unique_kegg_terms
+df$total_enriched <- df$go_total_enriched + df$kegg_total_enriched
+df$total_enriched_unique <- df$unique_go_terms + df$unique_kegg_terms
 
-df$enrichment_score = as.numeric(1/2 * (scale(df$unique_go_terms) +
+df$enrichment_score <- as.vector(1/2 * (scale(df$unique_go_terms) +
                                 scale(df$unique_kegg_terms)))
-df$enrichment_score_total = as.numeric(1/2 * (scale(df$go_total_enriched) +
+df$enrichment_score_total <- as.vector(1/2 * (scale(df$go_total_enriched) +
                                        scale(df$kegg_total_enriched)))
 
 # rename network id column

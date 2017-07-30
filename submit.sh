@@ -40,7 +40,7 @@
 # Slurm parameters
 #export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=32,walltime=32:00:00"
 #export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=4,walltime=32:00:00"
-export SBATCH_PARAMS="--qos=throughput --mem=3600 --ntasks-per-node=12 --time=0-18:00:00"
+export SBATCH_PARAMS="--qos=throughput --mem=36000 --ntasks-per-node=12 --time=0-18:00:00"
 
 # Base network construction settings to use
 export WORKING_DIR=$(pwd)
@@ -63,12 +63,12 @@ datestr=$(date +'%Y%m%d%H%M%S')
 
 # first eight chracters of queue name 
 # used to filter results from squeue
-export QUEUE=$(echo $SBATCH_PARAMS| egrep -o "\-qos=([a-z]+)" | cut -c 6- | cut -c -8)
+export QUEUE=$(echo $SBATCH_PARAMS| egrep -o "\-qos=([a-z]+)" | cut -c 6-)
 
 # Maximum number of jobs to run when using sbatch/parallel
 export MAX_JOBS_PARALLEL=1
 
-if [[ "$QUEUE" == "workstat" ]]; then
+if [[ "$QUEUE" == "workstation" ]]; then
     export MAX_JOBS_SBATCH=5
 else
     export MAX_JOBS_SBATCH=35
@@ -320,12 +320,12 @@ EOF
                                             if [[ "$USE_CLUSTER" == true ]]; then
                                                 if [[ $i -gt $min_i ]]; then
                                                     # Get the number of currently queued/running jobs
-                                                    num_jobs=$(squeue --user=$USER | grep param | grep $QUEUE | wc -l)
+                                                    num_jobs=$(squeue --user=$USER --qos=$QUEUE | grep param | wc -l)
 
                                                     while [[ $num_jobs -ge $MAX_JOBS_SBATCH ]]; do
                                                         printf "Pausing for %d seconds...\n" $PAUSE_TIME_IN_SECS
                                                         sleep $PAUSE_TIME_IN_SECS
-                                                        num_jobs=$(squeue --user=$USER | grep param | grep $QUEUE | wc -l)
+                                                        num_jobs=$(squeue --user=$USER --qos=$QUEUE | grep param | wc -l)
                                                     done
                                                 fi
                                             fi

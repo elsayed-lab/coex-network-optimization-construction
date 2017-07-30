@@ -103,7 +103,7 @@ print(sprintf("%20s: %s", 'Module merge correlation', merge_cor))
 print("===========================================================")
 
 # Print variable creations command to make it easier to reproduce
-print(sprintf("args <- c('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+print(sprintf("args <- c('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
               outfile, settings, network_type, low_count_threshold, cpm_transform,
               log2_transform, voom_transform, quantile_normalize, batch_adjustment,
               similarity_measure, adj_power, topological_overlap, merge_cor))

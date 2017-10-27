@@ -15,6 +15,7 @@ table(df$log2_transform)
 table(df$quantile_normalize)
 table(df$batch_adjustment)
 table(df$similarity_measure)
+table(df$topological_overlap)
 table(df$adj_power)
 ```
 

@@ -48,12 +48,17 @@ tested:
 - Counts-per-million (CPM) transformation (TRUE|FALSE)
 - Log2 transformation (TRUE|FALSE)
 - Quantile normalization (TRUE|FALSE)
-- Batch adjustment (limma|combat|none)
+- Batch adjustment, when available (limma|combat|none)
 - Similarity Measure (pearson correlation, spearman correlation, biweight
   mid-correlation, cor-dist)
 - Adjacency power (1-14)
 
-This will result in a total of 448 networks per dataset.
+This will result in a total of 1344 networks per dataset where batch
+information is available, and 448 networks otherwise.
+
+Further, for a single dataset (HsLm), additional parameter which have
+previously been compared and ruled out are including for demonstrative
+purposes.
 
 Changelog
 ---------
@@ -121,6 +126,24 @@ options(knitr.duplicate.label='allow')
 num_rows_to_display <- 15 
 ```
 
+*H .sapiens* All samples
+------------------------
+
+```{r load_data}
+df <- tbl_df(read.csv('output/normal/hsapiens_all-v6.0.csv'))
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
 *H .sapiens* Body Map multi-tissue network
 ------------------------------------------
 
@@ -184,6 +207,26 @@ df <- tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v6.0.c
 ```{r load_data}
 df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.0.csv') %>% 
     filter(network_type == 'signed')
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*H. sapiens* infected with *L. major* (including alt parameters)
+----------------------------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-full-v6.0.csv')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -290,6 +333,27 @@ df <- read_csv('output/normal/lmajor_infecting_hsapiens-v6.0.csv') %>%
 
 ```{r load_data}
 df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.0.csv') %>%
+    filter(network_type == 'signed')
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*T. cruzi* infecting *H. sapiens* (all stages)
+----------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/tcruzi_all_samples-v6.0.csv') %>%
     filter(network_type == 'signed')
 ```
 

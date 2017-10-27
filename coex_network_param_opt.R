@@ -135,7 +135,6 @@ knit('../00-shared/Rmd/main/data_prep_network.Rmd', quiet=TRUE, output=tempfile(
 knit('../00-shared/Rmd/main/network_construction.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/network_module_detection.Rmd', quiet=TRUE, output=tempfile())
 
-
 knit('../00-shared/Rmd/results/overview.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/expression_profiles.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/go_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
@@ -229,9 +228,10 @@ save(module_mapping, file=module_assignments_file)
 
 # Save rounded adjacency matrix
 # 2016/09/12 - disabling until explicitly needed (requires significant storage)
-#adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)
-#adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 2)
-#save(adjacency_matrix, file=adjacency_matrix_file)
+adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)
+adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 2)
+gene_ids <- rownames(adjacency_matrix)
+save(adjacency_matrix, gene_ids, file=adjacency_matrix_file)
 
 print("Results:")
 print(sprintf("num modules: %d", num_modules))

@@ -2,5 +2,6 @@
 
 ```{r highly_enriched, results='asis'}
 # remove static fields
-xkable(df %>% arrange(desc(enrichment_score)), num_rows_to_display)
+#xkable(df %>% arrange(desc(enrichment_score)), num_rows_to_display)
+datatable(df %>% arrange(desc(enrichment_score)))
 ```

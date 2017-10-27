@@ -180,9 +180,9 @@ entries <- c(test_id, network_type, low_count_threshold, cpm_transform,
              topological_overlap, merge_cor, num_modules_before, num_modules,
              num_genes, med_module_size, go_summary$total_categories,
              go_summary$unique_categories, go_summary$num_enriched_modules,
-             go_summary$mean_pval, kegg_summary$total_categories,
+             go_summary$mean_pval, go_summary$pval_score, kegg_summary$total_categories,
              kegg_summary$unique_categories, kegg_summary$num_enriched_modules,
-             kegg_summary$mean_pval, total_de)
+             kegg_summary$mean_pval, kegg_summary$pval_score, total_de)
 
 # For human / mouse, also include enrichment and overlap with iRefIndex, CPDB,
 # and Marbach et al. (2016) networks
@@ -196,14 +196,16 @@ if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) 
     cpdb_summary <- summarize_enrichment_result(cpdb_pathway_enrichment)
     entries <- append(entries,
                      c(cpdb_summary$total_categories, cpdb_summary$unique_categories,
-                       cpdb_summary$num_enriched_modules, cpdb_summary$mean_pval))
+                       cpdb_summary$num_enriched_modules, cpdb_summary$mean_pval,
+                       cpdb_summary$pval_score))
 
     if (CONFIG$host == 'H. sapiens') {
         # Marbach et al. (2016) TF co-regulated enrichment (Human only)
         marbach_summary <- summarize_enrichment_result(module_coreg_enrichment)
         entries <- append(entries,
                          c(marbach_summary$total_categories, marbach_summary$unique_categories,
-                           marbach_summary$num_enriched_modules, marbach_summary$mean_pval))
+                           marbach_summary$num_enriched_modules, marbach_summary$mean_pval,
+                           marbach_summary$pval_score))
     }
 }
 
@@ -212,7 +214,8 @@ if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
         leishcyc_summary <- summarize_enrichment_result(leishcyc_pathway_enrichment)
         entries <- append(entries,
                          c(leishcyc_summary$total_categories, leishcyc_summary$unique_categories,
-                           leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval))
+                           leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval,
+                           leishcyc_summary$pval_score))
 }
 
 # Output results table entry

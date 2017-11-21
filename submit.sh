@@ -176,11 +176,9 @@ elif [[ "$1" == "hstc" ]]; then
 elif [[ "$1" == "hstc-uninf" ]]; then
     # H. sapiens / T. cruzi (Uninfected samples only)
     echo "Optimizing network construction for H. sapiens infected with T. cruzi (Uninfected samples)"
-    export SETTINGS_FILE="${RESEARCH}/2015/13-coex-network-hsapiens-infected-with-tcruzi/settings/hsapiens_uninfected-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/13-coex-network-hsapiens-infected-with-tcruzi/settings/hsapiens_uninfected-v6.1.Rmd"
     export JOB_NAME="human_tcruzi_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_tcruzi-uninf-v6.0"
-    export BATCH_ADJUST="none"
-    export LOW_COUNT_THRESHOLD="10"
+    export SUBDIR="normal/hsapiens_infected_with_tcruzi-uninf-v6.1"
 elif [[ "$1" == "hsall" ]]; then
     # H. sapiens (all samples)
     echo "Optimizing network construction for H. sapiens (all samples)"

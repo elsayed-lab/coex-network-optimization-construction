@@ -230,9 +230,8 @@ module_mapping <- result %>% select(gene_id, color)
 save(module_mapping, file=module_assignments_file) 
 
 # Save rounded adjacency matrix
-# 2016/09/12 - disabling until explicitly needed (requires significant storage)
 adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)
-adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 2)
+adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 5)
 gene_ids <- rownames(adjacency_matrix)
 save(adjacency_matrix, gene_ids, file=adjacency_matrix_file)
 

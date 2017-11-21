@@ -181,6 +181,25 @@ df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-v6.0.csv') %>%
 ```{r child='child/results-plots.Rmd'}
 ```
 
+*H. sapiens* infected with *T. cruzi* (uninfected samples)
+----------------------------------------------------------
+
+```{r load_data}
+df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-uninf-v6.0.csv') %>%
+    filter(network_type == 'signed')
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
 *H. sapiens* infected with *L. braziliensis*
 --------------------------------------------
 
@@ -227,6 +246,27 @@ df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.0.csv') %>%
 
 ```{r load_data}
 df <- read_csv('output/normal/hsapiens_infected_with_lmajor-full-v6.0.csv')
+```
+
+```{r child='child/load-human-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-host.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*H. sapiens* infected with *L. major* (uninfected samples)
+----------------------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-uninf-v6.0.csv') %>%
+    filter(network_type == 'signed')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -304,6 +344,26 @@ df <- read_csv('output/normal/lmajor_all_samples-v6.0.csv') %>%
 ```{r child='child/results-plots.Rmd'}
 ```
 
+*L. major* all hosts (Incl. multicopy genes)
+--------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/lmajor_all_samples-multicopy-v6.0.csv') %>%
+    filter(network_type == 'signed')
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
 
 *L. major* infecting *H. sapiens* (intracellular)
 --------------------------------------------------
@@ -354,6 +414,27 @@ df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.0.csv') %>%
 
 ```{r load_data}
 df <- read_csv('output/normal/tcruzi_all_samples-v6.0.csv') %>%
+    filter(network_type == 'signed')
+```
+
+```{r child='child/load-other-data.Rmd'}
+```
+
+### All networks
+
+```{r child='child/results-summary-tables-other.Rmd'}
+```
+
+```{r child='child/results-plots.Rmd'}
+```
+
+*T. cruzi* infecting *H. sapiens* (all stages; including multicopy genes)
+-------------------------------------------------------------------------
+
+### General
+
+```{r load_data}
+df <- read_csv('output/normal/tcruzi_all_samples-multicopy-v6.0.csv') %>%
     filter(network_type == 'signed')
 ```
 

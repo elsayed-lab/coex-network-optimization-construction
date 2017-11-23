@@ -3,6 +3,12 @@
 # Co-expression network construction parameter optimization
 # Keith Hughitt (khughitt@umd.edu)
 #
+# v6.1
+# ----
+#
+# - Added total -log10(pval) columns for GO, KEGG, etc.
+# - Improved precision of stored adjacency matrices from 2 digits -> 5.
+#
 # v6.0
 # ----
 #
@@ -100,79 +106,79 @@ start_i=1
 if [[ "$1" == "lmmm" ]]; then
     # L. major / M. musculus
     echo "Optimizing network construction for L. major infecting M. musculus"
-    export SETTINGS_FILE="${RESEARCH}/2015/02-coex-network-lmajor-infecting-mmusculus/settings/lmajor_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/02-coex-network-lmajor-infecting-mmusculus/settings/lmajor_intracellular-v6.1.Rmd"
     export JOB_NAME="lmajor_mouse_param_opt-$datestr"
-    export SUBDIR="normal/lmajor_infecting_mmusculus-v6.0"
+    export SUBDIR="normal/lmajor_infecting_mmusculus-v6.1"
 elif [[ "$1" == "lmhs" ]]; then
     # L. major / H. sapiens
     echo "Optimizing network construction for L. major infecting H. sapiens"
-    export SETTINGS_FILE="${RESEARCH}/2015/01-coex-network-lmajor-infecting-hsapiens/settings/lmajor_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/01-coex-network-lmajor-infecting-hsapiens/settings/lmajor_intracellular-v6.1.Rmd"
     export JOB_NAME="lmajor_human_opt-$datestr"
-    export SUBDIR="normal/lmajor_infecting_hsapiens-v6.0"
+    export SUBDIR="normal/lmajor_infecting_hsapiens-v6.1"
 elif [[ "$1" == "lmall" ]]; then
     # L. major / H. sapiens / M. musculus
     echo "Optimizing network construction for L. major - All samples"
-    export SETTINGS_FILE="${RESEARCH}/2015/14-coex-network-lmajor-all-samples/settings/lmajor_all_samples-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/14-coex-network-lmajor-all-samples/settings/lmajor_all_samples-v6.1.Rmd"
     export JOB_NAME="lmajor_all_opt-$datestr"
-    export SUBDIR="normal/lmajor_all_samples-v6.0"
+    export SUBDIR="normal/lmajor_all_samples-v6.1"
 elif [[ "$1" == "lmall-multicopy" ]]; then
     # L. major / H. sapiens / M. musculus
     echo "Optimizing network construction for L. major - All samples (incl. multicopy genes)"
-    export SETTINGS_FILE="${RESEARCH}/2015/14-coex-network-lmajor-all-samples/settings/lmajor_all_samples-multicopy-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/14-coex-network-lmajor-all-samples/settings/lmajor_all_samples-multicopy-v6.1.Rmd"
     export JOB_NAME="lmajor_all_opt-$datestr"
-    export SUBDIR="normal/lmajor_all_samples-multicopy-v6.0"
+    export SUBDIR="normal/lmajor_all_samples-multicopy-v6.1"
 elif [[ "$1" == "tcall" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for T. cruzi - All samples"
-    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.1.Rmd"
     export JOB_NAME="tcruzi_all_opt-$datestr"
-    export SUBDIR="normal/tcruzi_all_samples-v6.0"
+    export SUBDIR="normal/tcruzi_all_samples-v6.1"
 elif [[ "$1" == "tcall-multicopy" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for T. cruzi - All samples (Incl. multicopy genes)"
-    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.0-multicopy.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.1-multicopy.Rmd"
     export JOB_NAME="tcruzi_all_opt-$datestr"
-    export SUBDIR="normal/tcruzi_all_samples-multicopy-v6.0"
+    export SUBDIR="normal/tcruzi_all_samples-multicopy-v6.1"
 elif [[ "$1" == "mmlm" ]]; then
     # M. musculus / L. major
     echo "Optimizing network construction for M. musculus infected with L. major"
-    export SETTINGS_FILE="${RESEARCH}/2015/12-coex-network-mmusculus-infected-with-lmajor/settings/mouse_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/12-coex-network-mmusculus-infected-with-lmajor/settings/mouse_intracellular-v6.1.Rmd"
     export JOB_NAME="mm_lm_opt-$datestr"
-    export SUBDIR="normal/mmusculus_infected_with_lmajor-v6.0"
+    export SUBDIR="normal/mmusculus_infected_with_lmajor-v6.1"
 elif [[ "$1" == "hslb" ]]; then
     # L. braziliensis / Human
     echo "Optimizing network construction for Human infected with L. braziliensis"
-    export SETTINGS_FILE="${RESEARCH}/2015/17-coex-network-hsapiens-infected-with-lbraziliensis/settings/hsapiens_inf_with_lbraziliensis-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/17-coex-network-hsapiens-infected-with-lbraziliensis/settings/hsapiens_inf_with_lbraziliensis-v6.1.Rmd"
     export JOB_NAME="hslb_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_lbraziliensis-v6.0"
+    export SUBDIR="normal/hsapiens_infected_with_lbraziliensis-v6.1"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "hslm" ]]; then
     # H. sapiens / L. major
     echo "Optimizing network construction for H. sapiens infected with L. major"
-    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.1.Rmd"
     export JOB_NAME="human_lmajor_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_lmajor-v6.0"
+    export SUBDIR="normal/hsapiens_infected_with_lmajor-v6.1"
 elif [[ "$1" == "hslm-uninf" ]]; then
     # H. sapiens / L. major (Uninfected samples only)
     echo "Optimizing network construction for H. sapiens infected with L. major (Uninfected)"
-    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_uninfected-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_uninfected-v6.1.Rmd"
     export JOB_NAME="human_lmajor_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_lmajor-uninf-v6.0"
+    export SUBDIR="normal/hsapiens_infected_with_lmajor-uninf-v6.1"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "hslm-full" ]]; then
     # H. sapiens / L. major (including TOM, signed/unsigned nets)
     echo "Optimizing network construction for H. sapiens infected with L. major"
-    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/11-coex-network-hsapiens-infected-with-lmajor/settings/hsapiens_intracellular-v6.1.Rmd"
     export JOB_NAME="human_lmajor_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_lmajor-full-v6.0"
+    export SUBDIR="normal/hsapiens_infected_with_lmajor-full-v6.1"
     export NET_TYPE="signed unsigned"
     export TOPOLOGICAL_OVERLAP="false true"
 elif [[ "$1" == "hstc" ]]; then
     # H. sapiens / T. cruzi
     echo "Optimizing network construction for H. sapiens infected with T. cruzi"
-    export SETTINGS_FILE="${RESEARCH}/2015/13-coex-network-hsapiens-infected-with-tcruzi/settings/hsapiens_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/13-coex-network-hsapiens-infected-with-tcruzi/settings/hsapiens_intracellular-v6.1.Rmd"
     export JOB_NAME="human_tcruzi_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_infected_with_tcruzi-v6.0"
+    export SUBDIR="normal/hsapiens_infected_with_tcruzi-v6.1"
 elif [[ "$1" == "hstc-uninf" ]]; then
     # H. sapiens / T. cruzi (Uninfected samples only)
     echo "Optimizing network construction for H. sapiens infected with T. cruzi (Uninfected samples)"
@@ -182,41 +188,41 @@ elif [[ "$1" == "hstc-uninf" ]]; then
 elif [[ "$1" == "hsall" ]]; then
     # H. sapiens (all samples)
     echo "Optimizing network construction for H. sapiens (all samples)"
-    export SETTINGS_FILE="${RESEARCH}/2015/15-coex-network-hsapiens-all-samples/settings/hsapiens_all_samples-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/15-coex-network-hsapiens-all-samples/settings/hsapiens_all_samples-v6.1.Rmd"
     export JOB_NAME="human_all_param_opt-$datestr"
-    export SUBDIR="normal/hsapiens_all-v6.0"
+    export SUBDIR="normal/hsapiens_all-v6.1"
 elif [[ "$1" == "tchs" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for T. cruzi infecting H. sapiens"
-    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_intracellular-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_intracellular-v6.1.Rmd"
     export JOB_NAME="tcruzi_hsapiens_param_opt-$datestr"
-    export SUBDIR="normal/tcruzi_infecting_hsapiens-v6.0"
+    export SUBDIR="normal/tcruzi_infecting_hsapiens-v6.1"
 elif [[ "$1" == "tchs-multicopy" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for T. cruzi infecting H. sapiens"
-    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_intracellular-v6.0-multicopy.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_intracellular-v6.1-multicopy.Rmd"
     export JOB_NAME="tcruzi_hsapiens_param_opt-$datestr"
-    export SUBDIR="normal/tcruzi_infecting_hsapiens-multicopy-v6.0"
+    export SUBDIR="normal/tcruzi_infecting_hsapiens-multicopy-v6.1"
 elif [[ "$1" == "bodymap" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for Illumina BodyMap"
-    export SETTINGS_FILE="${RESEARCH}/2015/18-coex-network-illumina-bodymap/settings/illumina_bodymap2-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/18-coex-network-illumina-bodymap/settings/illumina_bodymap2-v6.1.Rmd"
     export JOB_NAME="bodymap_param_opt-$datestr"
-    export SUBDIR="normal/illumina_bodymap-v6.0"
+    export SUBDIR="normal/illumina_bodymap-v6.1"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "modencode-fly" ]]; then
     # ModENCODE Fly
     echo "Optimizing network construction for ModENCODE Fly"
-    export SETTINGS_FILE="${RESEARCH}/2016/02-coex-networks/01-recount-modencode-fly/settings/recount-modencode-fly-settings-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2016.12-coex-networks/01-recount-modencode-fly/settings/recount-modencode-fly-settings-v6.1.Rmd"
     export JOB_NAME="modencode_fly_param_opt-$datestr"
-    export SUBDIR="normal/modencode_fly-v6.0"
+    export SUBDIR="normal/modencode_fly-v6.1"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "modencode-worm" ]]; then
     # ModENCODE Worm
     echo "Optimizing network construction for ModENCODE Worm"
-    export SETTINGS_FILE="${RESEARCH}/2016/02-coex-networks/02-recount-modencode-worm/settings/recount-modencode-worm-settings-v6.0.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2016.12-coex-networks/02-recount-modencode-worm/settings/recount-modencode-worm-settings-v6.1.Rmd"
     export JOB_NAME="modencode_worm_param_opt-$datestr"
-    export SUBDIR="normal/modencode_worm-v6.0"
+    export SUBDIR="normal/modencode_worm-v6.1"
     export BATCH_ADJUST="none"
 else
     echo 'Invalid option selected...'

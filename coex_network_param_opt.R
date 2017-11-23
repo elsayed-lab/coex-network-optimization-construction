@@ -211,7 +211,7 @@ if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) 
 
 # For L. major, include LeishCyc results
 if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
-        leishcyc_summary <- summarize_enrichment_result(leishcyc_pathway_enrichment)
+        leishcyc_summary <- summarize_enrichment_result(module_leishcyc_enrichment)
         entries <- append(entries,
                          c(leishcyc_summary$total_categories, leishcyc_summary$unique_categories,
                            leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval,

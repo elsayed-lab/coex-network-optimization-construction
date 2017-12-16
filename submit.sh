@@ -136,7 +136,7 @@ elif [[ "$1" == "tcall" ]]; then
 elif [[ "$1" == "tcall-multicopy" ]]; then
     # T. cruzi / H. sapiens
     echo "Optimizing network construction for T. cruzi - All samples (Incl. multicopy genes)"
-    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.1-multicopy.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2015/03-coex-network-tcruzi-infecting-hsapiens/settings/tcruzi_all_stages-v6.0-multicopy.Rmd"
     export JOB_NAME="tcruzi_all_opt-$datestr"
     export SUBDIR="normal/tcruzi_all_samples-multicopy-v6.1"
 elif [[ "$1" == "mmlm" ]]; then
@@ -151,6 +151,13 @@ elif [[ "$1" == "hslb" ]]; then
     export SETTINGS_FILE="${RESEARCH}/2015/17-coex-network-hsapiens-infected-with-lbraziliensis/settings/hsapiens_inf_with_lbraziliensis-v6.1.Rmd"
     export JOB_NAME="hslb_param_opt-$datestr"
     export SUBDIR="normal/hsapiens_infected_with_lbraziliensis-v6.1"
+    export BATCH_ADJUST="none"
+elif [[ "$1" == "hslb-no-deep-split" ]]; then
+    # L. braziliensis / Human
+    echo "Optimizing network construction for Human infected with L. braziliensis"
+    export SETTINGS_FILE="${RESEARCH}/2015/17-coex-network-hsapiens-infected-with-lbraziliensis/settings/hsapiens_inf_with_lbraziliensis-v6.1-no-deepSplit.Rmd"
+    export JOB_NAME="hslb_param_opt-$datestr"
+    export SUBDIR="normal/hsapiens_infected_with_lbraziliensis-v6.1-no-deep-split"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "hslm" ]]; then
     # H. sapiens / L. major
@@ -213,14 +220,14 @@ elif [[ "$1" == "bodymap" ]]; then
 elif [[ "$1" == "modencode-fly" ]]; then
     # ModENCODE Fly
     echo "Optimizing network construction for ModENCODE Fly"
-    export SETTINGS_FILE="${RESEARCH}/2016.12-coex-networks/01-recount-modencode-fly/settings/recount-modencode-fly-settings-v6.1.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2016/02-coex-networks/01-recount-modencode-fly/settings/recount-modencode-fly-settings-v6.1.Rmd"
     export JOB_NAME="modencode_fly_param_opt-$datestr"
     export SUBDIR="normal/modencode_fly-v6.1"
     export BATCH_ADJUST="none"
 elif [[ "$1" == "modencode-worm" ]]; then
     # ModENCODE Worm
     echo "Optimizing network construction for ModENCODE Worm"
-    export SETTINGS_FILE="${RESEARCH}/2016.12-coex-networks/02-recount-modencode-worm/settings/recount-modencode-worm-settings-v6.1.Rmd"
+    export SETTINGS_FILE="${RESEARCH}/2016/02-coex-networks/02-recount-modencode-worm/settings/recount-modencode-worm-settings-v6.1.Rmd"
     export JOB_NAME="modencode_worm_param_opt-$datestr"
     export SUBDIR="normal/modencode_worm-v6.1"
     export BATCH_ADJUST="none"

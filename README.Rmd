@@ -122,6 +122,8 @@ options(digits=4)
 options(stringsAsFactors=FALSE)
 options(knitr.duplicate.label='allow')
 
+theme_set(theme_grey(base_size=16))
+
 # number of high-scoring entries to display in table output
 num_rows_to_display <- 15 
 ```
@@ -166,8 +168,7 @@ df <- tbl_df(read.csv('output/normal/illumina_bodymap-v6.0.csv'))
 -----------------------------------------------------
 
 ```{r load_data}
-df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-v6.0.csv') %>%
-    filter(network_type == 'signed')
+df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-v6.1.csv')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -224,8 +225,7 @@ df <- tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v6.0.c
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.0.csv') %>% 
-    filter(network_type == 'signed')
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.1.csv')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -350,7 +350,7 @@ df <- read_csv('output/normal/lmajor_all_samples-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/lmajor_all_samples-multicopy-v6.0.csv') %>%
+df <- read_csv('output/normal/lmajor_all_samples-multicopy-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -412,21 +412,21 @@ df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.0.csv') %>%
 
 ### General
 
-```{r load_data}
-df <- read_csv('output/normal/tcruzi_all_samples-v6.0.csv') %>%
+```{r load_data, eval=FALSE}
+df <- read_csv('output/normal/tcruzi_all_samples-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
-```{r child='child/load-other-data.Rmd'}
-```
+{r child='child/load-other-data.Rmd'}
+
 
 ### All networks
 
-```{r child='child/results-summary-tables-other.Rmd'}
-```
+{r child='child/results-summary-tables-other.Rmd'}
 
-```{r child='child/results-plots.Rmd'}
-```
+
+{r child='child/results-plots.Rmd'}
+
 
 *T. cruzi* infecting *H. sapiens* (all stages; including multicopy genes)
 -------------------------------------------------------------------------
@@ -434,7 +434,7 @@ df <- read_csv('output/normal/tcruzi_all_samples-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/tcruzi_all_samples-multicopy-v6.0.csv') %>%
+df <- read_csv('output/normal/tcruzi_all_samples-multicopy-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 

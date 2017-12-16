@@ -144,6 +144,7 @@ knit('../00-shared/Rmd/results/kegg_enrichment_network.Rmd', quiet=TRUE, output=
 if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) {
     # iRefIndex / ConsensusPathDB
     knit('../00-shared/Rmd/results/host.Rmd', quiet=TRUE, output=tempfile())
+    knit('../00-shared/Rmd/results/cpdb_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
 
     if (CONFIG$host == 'H. sapiens') {
         # Marbach et al. (2016) TF target enrichment
@@ -193,7 +194,7 @@ if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) 
     entries <- append(entries, c(total_edge_weight, irefindex_edge_weight))
     
     # CPDB enrichment
-    cpdb_summary <- summarize_enrichment_result(cpdb_pathway_enrichment)
+    cpdb_summary <- summarize_enrichment_result(module_cpdb_enrichment)
     entries <- append(entries,
                      c(cpdb_summary$total_categories, cpdb_summary$unique_categories,
                        cpdb_summary$num_enriched_modules, cpdb_summary$mean_pval,
@@ -230,9 +231,23 @@ module_mapping <- result %>% select(gene_id, color)
 save(module_mapping, file=module_assignments_file) 
 
 # Save rounded adjacency matrix
+gene_ids <- rownames(adjacency_matrix)
+
 adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)
 adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 5)
-gene_ids <- rownames(adjacency_matrix)
+
+# check to make sure dimensions are as expected
+num_genes <- length(gene_ids)
+
+if ((((num_genes * num_genes) - num_genes) / 2) != length(adjacency_matrix)) {
+    stop("Invalid adjacency matrix output detected!")
+}
+
+# check to make sure range is as expected
+if (max(adjacency_matrix) > 1) {
+    stop("Invalid adjacency matrix output detected!")
+}
+
 save(adjacency_matrix, gene_ids, file=adjacency_matrix_file)
 
 print("Results:")

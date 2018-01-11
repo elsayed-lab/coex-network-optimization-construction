@@ -149,15 +149,8 @@ ggplot(df, aes(factor(merge_cor), enrichment_score)) +
     xlab('Merge correlation') + ylab('Enrichment score')
 ```
 
-```{r adjpower_vs_merge_cor, results='asis', echo=FALSE, include=plot_mergecor, eval=plot_mergecor}
-cat('\n**Adjacency power vs. Merge correlation (total)**\n')
-ggplot(df, aes(merge_cor, adj_power)) + 
-    geom_tile(aes(fill=enrichment_score_total)) +
-    scale_fill_gradient(low="green", high="red")
-```
-
 ```{r adjpower_vs_merge_cor_unique, results='asis', echo=FALSE, include=plot_mergecor, eval=plot_mergecor}
-cat('\n**Adjacency power vs. Merge correlation (unique)**\n')
+cat('\n**Adjacency power vs. Merge correlation**\n')
 ggplot(df, aes(merge_cor, adj_power)) + 
     geom_tile(aes(fill=enrichment_score)) +
     scale_fill_gradient(low="green", high="red")

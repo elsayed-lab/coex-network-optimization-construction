@@ -5,7 +5,7 @@ single module is split in two, and possibly also to a higher probability for
 false positives for modules with very few genes.
 
 ```{r module_size_trends}
-ggplot(df, aes(num_modules, total_enriched, colour=factor(merge_cor))) + 
+ggplot(df, aes(num_modules, enrichment_score, colour=factor(merge_cor))) + 
     geom_point() + geom_smooth()
 
 ```

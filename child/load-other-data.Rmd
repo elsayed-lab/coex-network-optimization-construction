@@ -20,10 +20,7 @@ table(df$adj_power)
 df$total_enriched <- df$go_total_enriched + df$kegg_total_enriched
 df$total_enriched_unique <- df$unique_go_terms + df$unique_kegg_terms
 
-df$enrichment_score <- as.vector(1/2 * (scale(df$unique_go_terms) +
-                                scale(df$unique_kegg_terms)))
-df$enrichment_score_total <- as.vector(1/2 * (scale(df$go_total_enriched) +
-                                       scale(df$kegg_total_enriched)))
+df$enrichment_score <- as.vector(scale(df$total_go_pval))
 
 # rename network id column
 colnames(df)[1] <- 'network_id'

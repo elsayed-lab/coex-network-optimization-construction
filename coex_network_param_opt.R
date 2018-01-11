@@ -133,8 +133,28 @@ knit('../00-shared/Rmd/main/data_prep_de.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/differential_expression.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/data_prep_network.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/network_construction.Rmd', quiet=TRUE, output=tempfile())
-knit('../00-shared/Rmd/main/network_module_detection.Rmd', quiet=TRUE, output=tempfile())
 
+# save similarity matrix prior to shifting / power transformation to preserve
+# edge sign
+gene_ids <- rownames(similarity_matrix)
+
+sim_matrix_file <- sub('\\.out', '_simmat.RData', outfile)
+similarity_matrix <- round(similarity_matrix[upper.tri(similarity_matrix)], 5)
+
+# check to make sure dimensions are as expected
+num_genes <- length(gene_ids)
+
+if ((((num_genes * num_genes) - num_genes) / 2) != length(similarity_matrix)) {
+    stop("Invalid similarity matrix output detected!")
+}
+
+# check to make sure range is as expected
+if (max(similarity_matrix) > 1) {
+    stop("Invalid similarity matrix output detected!")
+}
+save(similarity_matrix, gene_ids, file=sim_matrix_file)
+
+knit('../00-shared/Rmd/main/network_module_detection.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/overview.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/expression_profiles.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/go_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
@@ -230,7 +250,9 @@ module_assignments_file <- sub('\\.out', '.RData', outfile)
 module_mapping <- result %>% select(gene_id, color)
 save(module_mapping, file=module_assignments_file) 
 
+#
 # Save rounded adjacency matrix
+#
 gene_ids <- rownames(adjacency_matrix)
 
 adjacency_matrix_file <- sub('\\.out', '_adjmat.RData', outfile)

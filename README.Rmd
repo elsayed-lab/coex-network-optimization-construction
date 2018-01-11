@@ -132,7 +132,7 @@ num_rows_to_display <- 15
 ------------------------
 
 ```{r load_data}
-df <- tbl_df(read.csv('output/normal/hsapiens_all-v6.0.csv'))
+df <- tbl_df(read.csv('output/normal/hsapiens_all-v6.1.csv'))
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -150,7 +150,7 @@ df <- tbl_df(read.csv('output/normal/hsapiens_all-v6.0.csv'))
 ------------------------------------------
 
 ```{r load_data}
-df <- tbl_df(read.csv('output/normal/illumina_bodymap-v6.0.csv'))
+df <- tbl_df(read.csv('output/normal/illumina_bodymap-v6.1.csv'))
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -186,7 +186,7 @@ df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-v6.1.csv')
 ----------------------------------------------------------
 
 ```{r load_data}
-df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-uninf-v6.0.csv') %>%
+df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-uninf-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -205,7 +205,7 @@ df <- read_csv('output/normal/hsapiens_infected_with_tcruzi-uninf-v6.0.csv') %>%
 --------------------------------------------
 
 ```{r load_data}
-df <- tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v6.0.csv'))
+df <- tbl_df(read.csv('output/normal/hsapiens_infected_with_lbraziliensis-v6.1.csv'))
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -245,7 +245,7 @@ df <- read_csv('output/normal/hsapiens_infected_with_lmajor-v6.1.csv')
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/hsapiens_infected_with_lmajor-full-v6.0.csv')
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-full-v6.1.csv')
 ```
 
 ```{r child='child/load-human-data.Rmd'}
@@ -265,7 +265,7 @@ df <- read_csv('output/normal/hsapiens_infected_with_lmajor-full-v6.0.csv')
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/hsapiens_infected_with_lmajor-uninf-v6.0.csv') %>%
+df <- read_csv('output/normal/hsapiens_infected_with_lmajor-uninf-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -286,7 +286,7 @@ df <- read_csv('output/normal/hsapiens_infected_with_lmajor-uninf-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/mmusculus_infected_with_lmajor-v6.0.csv') %>%
+df <- read_csv('output/normal/mmusculus_infected_with_lmajor-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -308,7 +308,7 @@ df <- read_csv('output/normal/mmusculus_infected_with_lmajor-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/lmajor_infecting_mmusculus-v6.0.csv') %>% 
+df <- read_csv('output/normal/lmajor_infecting_mmusculus-v6.1.csv') %>% 
     filter(network_type == 'signed')
 ```
 
@@ -329,7 +329,7 @@ df <- read_csv('output/normal/lmajor_infecting_mmusculus-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/lmajor_all_samples-v6.0.csv') %>%
+df <- read_csv('output/normal/lmajor_all_samples-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -371,7 +371,7 @@ df <- read_csv('output/normal/lmajor_all_samples-multicopy-v6.1.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/lmajor_infecting_hsapiens-v6.0.csv') %>% 
+df <- read_csv('output/normal/lmajor_infecting_hsapiens-v6.1.csv') %>% 
     filter(network_type == 'signed')
 ```
 
@@ -392,7 +392,7 @@ df <- read_csv('output/normal/lmajor_infecting_hsapiens-v6.0.csv') %>%
 ### General
 
 ```{r load_data}
-df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.0.csv') %>%
+df <- read_csv('output/normal/tcruzi_infecting_hsapiens-v6.1.csv') %>%
     filter(network_type == 'signed')
 ```
 
@@ -455,7 +455,7 @@ ModENCODE - Fly
 ### General
 
 ```{r load_data}
-df <- tbl_df(read.csv('output/normal/modencode_fly-v6.0.csv'))
+df <- tbl_df(read.csv('output/normal/modencode_fly-v6.1.csv'))
 ```
 
 ```{r child='child/load-other-data.Rmd'}
@@ -475,7 +475,7 @@ ModENCODE - Worm
 ### General
 
 ```{r load_data}
-df <- tbl_df(read.csv('output/normal/modencode_worm-v6.0.csv'))
+df <- tbl_df(read.csv('output/normal/modencode_worm-v6.1.csv'))
 ```
 
 ```{r child='child/load-other-data.Rmd'}

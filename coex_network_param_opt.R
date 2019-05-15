@@ -32,7 +32,7 @@
 
 
 # Set working directory manually to be safe
-setwd(file.path(Sys.getenv('RESEARCH'), '2015/115-coex-network-param-opt-v6'))
+setwd(file.path(Sys.getenv('UMD'), '2015/115-coex-network-param-opt-v6'))
 
 library(knitr)
 knit('../00-shared/Rmd/init/header_network.Rmd', quiet=TRUE, output=tempfile())
@@ -112,48 +112,27 @@ print(sprintf("args <- c('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '
 knit('../00-shared/Rmd/init/load_counts.Rmd', quiet=TRUE, output=tempfile())
 
 if (CONFIG$target == 'host') {
-    if (CONFIG$host == 'D. melanogaster') {
-        knit('../00-shared/Rmd/init/load_fly_annotations.Rmd', quiet=TRUE, output=tempfile())
-    } else if (CONFIG$host == 'C. elegans') {
-        knit('../00-shared/Rmd/init/load_worm_annotations.Rmd', quiet=TRUE, output=tempfile())
-    } else {
-        knit('../00-shared/Rmd/init/load_host_annotations.Rmd', quiet=TRUE, output=tempfile())
-    }
+  if (CONFIG$host == 'D. melanogaster') {
+    knit('../00-shared/Rmd/init/load_fly_annotations.Rmd', quiet=TRUE, output=tempfile())
+  } else if (CONFIG$host == 'C. elegans') {
+    knit('../00-shared/Rmd/init/load_worm_annotations.Rmd', quiet=TRUE, output=tempfile())
+  } else {
+    knit('../00-shared/Rmd/init/load_host_annotations.Rmd', quiet=TRUE, output=tempfile())
+  }
 } else {
-    knit('../00-shared/Rmd/init/load_pathogen_annotations.Rmd', quiet=TRUE, output=tempfile())
+  knit('../00-shared/Rmd/init/load_pathogen_annotations.Rmd', quiet=TRUE, output=tempfile())
 }
 knit('../00-shared/Rmd/init/create_expression_set.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/filter_counts.Rmd', quiet=TRUE, output=tempfile())
 
 if (CONFIG$target == 'pathogen' && CONFIG$filter_multicopy) {
-    knit('../00-shared/Rmd/main/filter_multicopy_genes.Rmd', quiet=TRUE, output=tempfile())
+  knit('../00-shared/Rmd/main/filter_multicopy_genes.Rmd', quiet=TRUE, output=tempfile())
 }
 
 knit('../00-shared/Rmd/main/data_prep_de.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/differential_expression.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/data_prep_network.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/main/network_construction.Rmd', quiet=TRUE, output=tempfile())
-
-# save similarity matrix prior to shifting / power transformation to preserve
-# edge sign
-gene_ids <- rownames(similarity_matrix)
-
-sim_matrix_file <- sub('\\.out', '_simmat.RData', outfile)
-similarity_matrix <- round(similarity_matrix[upper.tri(similarity_matrix)], 5)
-
-# check to make sure dimensions are as expected
-num_genes <- length(gene_ids)
-
-if ((((num_genes * num_genes) - num_genes) / 2) != length(similarity_matrix)) {
-    stop("Invalid similarity matrix output detected!")
-}
-
-# check to make sure range is as expected
-if (max(similarity_matrix) > 1) {
-    stop("Invalid similarity matrix output detected!")
-}
-save(similarity_matrix, gene_ids, file=sim_matrix_file)
-
 knit('../00-shared/Rmd/main/network_module_detection.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/overview.Rmd', quiet=TRUE, output=tempfile())
 knit('../00-shared/Rmd/results/expression_profiles.Rmd', quiet=TRUE, output=tempfile())
@@ -162,20 +141,26 @@ knit('../00-shared/Rmd/results/kegg_enrichment_network.Rmd', quiet=TRUE, output=
 
 # Host-specific results
 if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) {
-    # iRefIndex / ConsensusPathDB
-    knit('../00-shared/Rmd/results/host.Rmd', quiet=TRUE, output=tempfile())
-    knit('../00-shared/Rmd/results/cpdb_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
+  # iRefIndex / ConsensusPathDB
+  knit('../00-shared/Rmd/results/host.Rmd', quiet=TRUE, output=tempfile())
+  knit('../00-shared/Rmd/results/cpdb_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
 
-    if (CONFIG$host == 'H. sapiens') {
-        # Marbach et al. (2016) TF target enrichment
-        knit('../00-shared/Rmd/results/hsapiens_marbach2016_tf_enrichment.Rmd', quiet=TRUE, output=tempfile())
-    }
+  if (CONFIG$host == 'H. sapiens') {
+    # MsigDB (goseq / h.all, c2.cp.reactome, c2.cp.biocarta, c3.mir, c3.tft, c7.all)
+    knit('../00-shared/Rmd/results/msigdb_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
+
+    # MsigDB (GSEA / h.all, c2.all, c5.all, c7.all)
+    knit('../00-shared/Rmd/results/msigdb_gsea_enrichment_network.Rmd', quiet=TRUE, output=tempfile())
+
+    # Marbach et al. (2016) TF target enrichment
+    knit('../00-shared/Rmd/results/hsapiens_marbach2016_tf_enrichment.Rmd', quiet=TRUE, output=tempfile())
+  }
 }
 
 # L. major specific results
 if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
-    # LeishCyc
-    knit('../00-shared/Rmd/results/leishcyc_enrichment.Rmd', quiet=TRUE, output=tempfile())
+  # LeishCyc
+  knit('../00-shared/Rmd/results/leishcyc_enrichment.Rmd', quiet=TRUE, output=tempfile())
 }
 
 # Summarize module annotation enrichment
@@ -208,35 +193,49 @@ entries <- c(test_id, network_type, low_count_threshold, cpm_transform,
 # For human / mouse, also include enrichment and overlap with iRefIndex, CPDB,
 # and Marbach et al. (2016) networks
 if (CONFIG$target == 'host' && CONFIG$host %in% c('H. sapiens', 'M. musculus')) {
-    # Overlap with iRefIndex PPI network
-    total_edge_weight     <- sprintf("%0.2f", sum(adjacency_matrix))
-    irefindex_edge_weight <- sprintf("%0.2f", iref_edge_sum)
-    entries <- append(entries, c(total_edge_weight, irefindex_edge_weight))
-    
-    # CPDB enrichment
-    cpdb_summary <- summarize_enrichment_result(module_cpdb_enrichment)
-    entries <- append(entries,
-                     c(cpdb_summary$total_categories, cpdb_summary$unique_categories,
-                       cpdb_summary$num_enriched_modules, cpdb_summary$mean_pval,
-                       cpdb_summary$pval_score))
+  # Overlap with iRefIndex PPI network
+  total_edge_weight     <- sprintf("%0.2f", sum(adjacency_matrix))
+  irefindex_edge_weight <- sprintf("%0.2f", iref_edge_sum)
+  entries <- append(entries, c(total_edge_weight, irefindex_edge_weight))
+  
+  # CPDB enrichment
+  cpdb_summary <- summarize_enrichment_result(module_cpdb_enrichment)
+  entries <- append(entries,
+                    c(cpdb_summary$total_categories, cpdb_summary$unique_categories,
+                      cpdb_summary$num_enriched_modules, cpdb_summary$mean_pval,
+                      cpdb_summary$pval_score))
 
-    if (CONFIG$host == 'H. sapiens') {
-        # Marbach et al. (2016) TF co-regulated enrichment (Human only)
-        marbach_summary <- summarize_enrichment_result(module_coreg_enrichment)
-        entries <- append(entries,
-                         c(marbach_summary$total_categories, marbach_summary$unique_categories,
-                           marbach_summary$num_enriched_modules, marbach_summary$mean_pval,
-                           marbach_summary$pval_score))
-    }
+  if (CONFIG$host == 'H. sapiens') {
+    # MSigDB (goseq results)
+    msigdb_summary <- summarize_enrichment_result(module_msigdb_enrichment)
+    entries <- append(entries,
+                      c(msigdb_summary$total_categories, msigdb_summary$unique_categories,
+                        msigdb_summary$num_enriched_modules, msigdb_summary$mean_pval,
+                        msigdb_summary$pval_score))
+
+    # MSigDB (GSEA results)
+    entries <- append(entries,
+                      c(gsea_network_summary$num_enriched, gsea_network_summary$unique_enriched,
+                        gsea_network_summary$mean_pval, gsea_network_summary$median_pval,
+                        gsea_network_summary$pval_score,
+                        gsea_network_summary$avg_enriched_per_module))
+
+    # Marbach et al. (2016) TF co-regulated enrichment (Human only)
+    marbach_summary <- summarize_enrichment_result(module_coreg_enrichment)
+    entries <- append(entries,
+                      c(marbach_summary$total_categories, marbach_summary$unique_categories,
+                        marbach_summary$num_enriched_modules, marbach_summary$mean_pval,
+                        marbach_summary$pval_score))
+  }
 }
 
 # For L. major, include LeishCyc results
 if (CONFIG$target == 'pathogen' && CONFIG$pathogen == 'L. major') {
-        leishcyc_summary <- summarize_enrichment_result(module_leishcyc_enrichment)
-        entries <- append(entries,
-                         c(leishcyc_summary$total_categories, leishcyc_summary$unique_categories,
-                           leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval,
-                           leishcyc_summary$pval_score))
+  leishcyc_summary <- summarize_enrichment_result(module_leishcyc_enrichment)
+  entries <- append(entries,
+                    c(leishcyc_summary$total_categories, leishcyc_summary$unique_categories,
+                      leishcyc_summary$num_enriched_modules, leishcyc_summary$mean_pval,
+                      leishcyc_summary$pval_score))
 }
 
 # Output results table entry
@@ -262,12 +261,12 @@ adjacency_matrix <- round(adjacency_matrix[upper.tri(adjacency_matrix)], 5)
 num_genes <- length(gene_ids)
 
 if ((((num_genes * num_genes) - num_genes) / 2) != length(adjacency_matrix)) {
-    stop("Invalid adjacency matrix output detected!")
+  stop("Invalid adjacency matrix output detected!")
 }
 
 # check to make sure range is as expected
 if (max(adjacency_matrix) > 1) {
-    stop("Invalid adjacency matrix output detected!")
+  stop("Invalid adjacency matrix output detected!")
 }
 
 save(adjacency_matrix, gene_ids, file=adjacency_matrix_file)

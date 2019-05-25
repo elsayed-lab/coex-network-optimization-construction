@@ -4,7 +4,7 @@ Version=0.4.0-21
 [R]
 Version=3.6.0
 Repositories=
-	CRAN=http://lib.stat.cmu.edu/R/CRAN/
+	CRAN=https://cran.rstudio.com/
 
 [Bioconductor]
 Repositories=
@@ -12,7 +12,7 @@ Repositories=
 	BioCann=https://bioconductor.org/packages/3.9/data/annotation
 	BioCexp=https://bioconductor.org/packages/3.9/data/experiment
 	BioCworkflows=https://bioconductor.org/packages/3.9/workflows
-	CRAN=http://lib.stat.cmu.edu/R/CRAN/
+	CRAN=https://cran.rstudio.com
 
 [R/Package/AnnotationDbi]
 Package=AnnotationDbi

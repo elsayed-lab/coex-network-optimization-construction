@@ -60,8 +60,8 @@
 # Slurm parameters
 #export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=32,walltime=32:00:00"
 #export SBATCH_PARAMS="-q workstation -l mem=46gb,ncpus=4,walltime=32:00:00"
-#export SBATCH_PARAMS="--qos=throughput --mem=36000 --ntasks-per-node=12 --time=0-18:00:00"
-export SBATCH_PARAMS="--qos=large --mem=126000 --ntasks-per-node=12 --time=32:00:00"
+export SBATCH_PARAMS="--qos=throughput --mem=36000 --ntasks-per-node=12 --time=0-18:00:00"
+#export SBATCH_PARAMS="--qos=large --mem=126000 --ntasks-per-node=12 --time=32:00:00"
 
 # Base network construction settings to use
 export WORKING_DIR=$(pwd)

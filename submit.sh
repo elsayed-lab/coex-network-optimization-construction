@@ -3,6 +3,9 @@
 # Co-expression network construction parameter optimization
 # Keith Hughitt (khughitt@umd.edu)
 #
+# conda create -n coex-nets -c bioconda -c defaults r-base=3.5.1 r-devtools 
+#     r-rcppparallel r-rcpparmadillo r-rmarkdown gcc_linux-64 gfortran_linux-64
+#
 # v8.0
 # ----
 # 

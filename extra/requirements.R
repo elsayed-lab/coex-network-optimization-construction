@@ -1,38 +1,27 @@
 #######################################################################################
 # list of R packages used in this analysis; this file exists to help renv detect all 
 # needed packages without having to include them explicitly in coex_network_param_opt.R
+#
+# Packages with github sources that can't be picked up renv::hydrate():
+#
+# - slowkow/tftargets
+# - tephenturner/annotables
+# - elsayed-lab/hpgltools
+# - elsayed-lab/Leishmania.major.Friedlin
+# - elsayed-lab/Trypanosoma.cruzi.CLBrener.Esmeraldo
+#
 #######################################################################################
 
-library(annotables)
-library(Biobase)
-library(biomaRt) 
 library(coop)
-library(doParallel)
-library(flashClust)
-library(foreach)
-library(goseq)
-library(GO.db)
-library(gridExtra)
-library(hpgltools)
-library(KEGGREST)
 library(knitr)
-library(igraph)
-library(limma)
-library(Matrix)
 library(matrixStats)
 library(plyr)
-library(dplyr)
-library(readr)
-library(tools)
-library(rtracklayer)
 library(parallelDist)
-library(preprocessCore)
+library(doParallel)
 library(printr)
 library(reshape2)
 library(RCurl)
-library(sva)
-library(tftargets)
-library(WGCNA)
-library(Homo.sapiens)
-library(Leishmania.major.Friedlin)
-library(Trypanosoma.cruzi.CLBrener.Esmeraldo)
+library(flashClust)
+library(gridExtra)
+library(foreach)
+

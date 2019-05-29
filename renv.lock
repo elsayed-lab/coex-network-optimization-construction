@@ -2,1095 +2,945 @@
 Version=0.4.0-21
 
 [R]
-Version=3.6.0
+Version=3.5.1
 Repositories=
-	CRAN=https://cran.rstudio.com/
+	CRAN=http://lib.stat.cmu.edu/R/CRAN/
 
 [Bioconductor]
 Repositories=
-	BioCsoft=https://bioconductor.org/packages/3.9/bioc
-	BioCann=https://bioconductor.org/packages/3.9/data/annotation
-	BioCexp=https://bioconductor.org/packages/3.9/data/experiment
-	BioCworkflows=https://bioconductor.org/packages/3.9/workflows
-	CRAN=https://cran.rstudio.com
+	BioCsoft=https://bioconductor.org/packages/3.8/bioc
+	BioCann=https://bioconductor.org/packages/3.8/data/annotation
+	BioCexp=https://bioconductor.org/packages/3.8/data/experiment
+	BioCworkflows=https://bioconductor.org/packages/3.8/workflows
+	CRAN=http://lib.stat.cmu.edu/R/CRAN/
 
 [R/Package/AnnotationDbi]
 Package=AnnotationDbi
-Version=1.46.0
+Version=1.44.0
 Source=Bioconductor
-Hash=73b4b38ca1dfbdc548f231f49c138aa8
+Hash=48d4384690282b08f0f55df79b257d69
 
 [R/Package/BH]
 Package=BH
 Version=1.69.0-1
 Source=CRAN
-Hash=cfad72c4156ccde689e24ed26010a931
+Hash=c21ff57827acd7a1e150943fa1264677
 
 [R/Package/BiasedUrn]
 Package=BiasedUrn
 Version=1.07
 Source=CRAN
-Hash=ac92bd7daa29841652a1368b989b4a19
+Hash=8ecca17d4df2b52b8f1d4a6db1216fb2
 
 [R/Package/Biobase]
 Package=Biobase
-Version=2.44.0
+Version=2.42.0
 Source=Bioconductor
-Hash=e95ef26281b7c83b10486279358c7f98
+Hash=11040b20541b211c20c251f7155225df
 
 [R/Package/BiocGenerics]
 Package=BiocGenerics
-Version=0.30.0
+Version=0.28.0
 Source=Bioconductor
-Hash=3eef61b00997cf0f46a1b9e86d7351e7
+Hash=a91303d39c44b952ca0d5aaf75b7dd72
 
 [R/Package/BiocManager]
 Package=BiocManager
 Version=1.30.4
 Source=CRAN
-Hash=6d28c88067214679a36e985ca151b89b
+Hash=7e8b7fb1207bd17dc280926c733c743d
 
 [R/Package/BiocParallel]
 Package=BiocParallel
-Version=1.18.0
+Version=1.16.6
 Source=Bioconductor
-Hash=a185d0327737ac8c9632bbe3a5400322
+Hash=820ed900749df958e5685aca61ca4815
+
+[R/Package/BiocVersion]
+Package=BiocVersion
+Version=3.8.0
+Source=Bioconductor
+Hash=cf9241271c354124975ee403bd18d76e
 
 [R/Package/Biostrings]
 Package=Biostrings
-Version=2.52.0
+Version=2.50.2
 Source=Bioconductor
-Hash=c90c73d4c16d5b3c9b132d29251bd8c2
+Hash=7acef6ce0f2cffb0680358919709579d
 
 [R/Package/DBI]
 Package=DBI
 Version=1.0.0
 Source=CRAN
-Hash=1ef1e76f32e6d1ba1ffa20fa6f4119ba
+Hash=94e14b1b10cd45c8f57027d484724e4d
 
 [R/Package/DEoptimR]
 Package=DEoptimR
 Version=1.0-8
 Source=CRAN
-Hash=96b7633aa0b16767339bc5aa755938ce
+Hash=fb74379f9aa1f00508890e69232597ff
 
 [R/Package/DT]
 Package=DT
 Version=0.6
 Source=CRAN
-Hash=6351f3bbc64bfaad630938028ac38b3d
+Hash=2c66b9a1a9066f96d5d54590373be19b
 
 [R/Package/DelayedArray]
 Package=DelayedArray
-Version=0.10.0
+Version=0.8.0
 Source=Bioconductor
-Hash=a3ec78f4c18aac2f8412b91602959b9d
+Hash=e81cc452e071759ba2f5696f85b6d840
 
 [R/Package/Formula]
 Package=Formula
 Version=1.2-3
 Source=CRAN
-Hash=587abf30af204d3c875be8c09668f094
+Hash=01f549cb35d1c54687c7fb03b0c0b4e8
 
 [R/Package/GO.db]
 Package=GO.db
-Version=3.8.2
+Version=3.7.0
 Source=Bioconductor
-Hash=334cb6e88432974de6acfd44d8437357
+Hash=07b8d3aa08590cefc293aea1570e153c
 
 [R/Package/GenomeInfoDb]
 Package=GenomeInfoDb
-Version=1.20.0
+Version=1.18.2
 Source=Bioconductor
-Hash=5495bfd6520cd8d3e40026c80b1f3492
+Hash=ca4ccde28cb8a5c12f2a21d91881e0b0
 
 [R/Package/GenomeInfoDbData]
 Package=GenomeInfoDbData
-Version=1.2.1
+Version=1.2.0
 Source=Bioconductor
-Hash=6490bc82580d6e02f1abcd6c75aeadbd
+Hash=c4fbec3617fcdfc1a93d9bc1cfe9f0e4
 
 [R/Package/GenomicAlignments]
 Package=GenomicAlignments
-Version=1.20.0
+Version=1.18.1
 Source=Bioconductor
-Hash=40499a294c4491310649fcc32b586089
+Hash=13636a3195db83b062fe8055b55b6a5c
 
 [R/Package/GenomicFeatures]
 Package=GenomicFeatures
-Version=1.36.0
+Version=1.34.8
 Source=Bioconductor
-Hash=f3430004f0094471710b30be73ab6438
+Hash=8bd8b821930f65ff9d65694e0e3abe7c
 
 [R/Package/GenomicRanges]
 Package=GenomicRanges
-Version=1.36.0
+Version=1.34.0
 Source=Bioconductor
-Hash=9dfa903a865834deace55738b19217c2
+Hash=d25a3c42c88dba34e9120542e5b89f00
 
 [R/Package/Hmisc]
 Package=Hmisc
 Version=4.2-0
 Source=CRAN
-Hash=d9a8298d07eab0b1a2a7699e99a3044c
-
-[R/Package/Homo.sapiens]
-Package=Homo.sapiens
-Version=1.3.1
-Source=Bioconductor
-Hash=085faa0aaee1ee9623f649344f89d9d1
+Hash=e5f86a41a1b6012624ab13dfc90ef7f0
 
 [R/Package/IRanges]
 Package=IRanges
-Version=2.18.0
+Version=2.16.0
 Source=Bioconductor
-Hash=05f6fd87253ca6dcb0a0d325df6fc1b0
+Hash=bc047311e5117af4f44214acee9e0281
 
 [R/Package/KEGGREST]
 Package=KEGGREST
-Version=1.24.0
+Version=1.22.0
 Source=Bioconductor
-Hash=55ca491afdaf234afa52005e5cbe66f1
-
-[R/Package/Leishmania.major.Friedlin]
-Package=Leishmania.major.Friedlin
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=Leishmania.major.Friedlin
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=1d55e76d39326529b4c2d5f9e661eb9e0037640a
-Hash=03c85980a7693e7c9101a858f64fa758
+Hash=1fdc02e3807d5fca828447a9b5b33bf6
 
 [R/Package/MASS]
 Package=MASS
 Version=7.3-51.4
 Source=CRAN
-Hash=3f74d247b4ab8e3f0fd6c8655ba4ee09
+Hash=dfd2b1c0b9413c7eadc350505020ee96
 
 [R/Package/Matrix]
 Package=Matrix
 Version=1.2-17
 Source=CRAN
-Hash=37c16af3f7da98c8f5da858855e13115
-
-[R/Package/OrganismDbi]
-Package=OrganismDbi
-Version=1.26.0
-Source=Bioconductor
-Hash=333e2c37c78605a93bbc614c20515c71
+Hash=b10030fd8c964dbecd79719236d4a668
 
 [R/Package/R6]
 Package=R6
 Version=2.4.0
 Source=CRAN
-Hash=4f39f15779e55cb06d47e0904b14522c
-
-[R/Package/RBGL]
-Package=RBGL
-Version=1.60.0
-Source=Bioconductor
-Hash=66983bbb970f27c4cac47da3608a9c64
+Hash=f542e196103d43e270c2f12769143a4c
 
 [R/Package/RColorBrewer]
 Package=RColorBrewer
 Version=1.1-2
 Source=CRAN
-Hash=c415f5010b2a1775dc6e3bd27f609666
+Hash=e12d9efbd8540624beb948405e496adf
 
 [R/Package/RCurl]
 Package=RCurl
 Version=1.95-4.12
 Source=CRAN
-Hash=3fb63a640ba53bce014d0157e1679335
+Hash=6187bb03ed85df8493b52297710c2416
 
 [R/Package/RSQLite]
 Package=RSQLite
 Version=2.1.1
 Source=CRAN
-Hash=976b7f65debde2d44e70a109569d2334
+Hash=b01cef796fb06b93f1928f27caf6a46a
 
 [R/Package/Rcpp]
 Package=Rcpp
 Version=1.0.1
 Source=CRAN
-Hash=53a3039e93de5ce8f1d3143389a44e6b
+Hash=4d7fa746fdb53594e05a7271affa63db
 
 [R/Package/RcppArmadillo]
 Package=RcppArmadillo
 Version=0.9.400.3.0
 Source=CRAN
-Hash=85f78399c77f07b357ee22d05f5c6f64
+Hash=f63651dc63467103b72d9869a4458bb7
 
 [R/Package/RcppParallel]
 Package=RcppParallel
 Version=4.4.3
 Source=CRAN
-Hash=9aa99b78c64701d37f8ce1fc21823a37
-
-[R/Package/Rhtslib]
-Package=Rhtslib
-Version=1.16.1
-Source=Bioconductor
-Hash=7461cf4d4c791f486a174a772ae111c6
+Hash=7ffaf5c1b39fa0ceb0a4ef7ba951caa8
 
 [R/Package/Rsamtools]
 Package=Rsamtools
-Version=2.0.0
+Version=1.34.1
 Source=Bioconductor
-Hash=80d74587d094ff5e6ce2c68f6665ca7a
+Hash=2bb584872c3b2b339f136ac5884bcf64
 
 [R/Package/S4Vectors]
 Package=S4Vectors
-Version=0.22.0
+Version=0.20.1
 Source=Bioconductor
-Hash=46359ff702ab6e99717c71afd3a7b4cc
+Hash=7b952afb9d5dd97a51de412846ab5683
 
 [R/Package/SummarizedExperiment]
 Package=SummarizedExperiment
-Version=1.14.0
+Version=1.12.0
 Source=Bioconductor
-Hash=22145d80da6e3e87000d595274cdaa8d
-
-[R/Package/Trypanosoma.cruzi.CLBrener.Esmeraldo]
-Package=Trypanosoma.cruzi.CLBrener.Esmeraldo
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=Trypanosoma.cruzi.CLBrener.Esmeraldo
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=83a7406b3fc0f57152d6d06b3495566f43cb56d5
-Hash=1b06f8aa338041b131033c32d31ec1ef
-
-[R/Package/TxDb.Hsapiens.UCSC.hg19.knownGene]
-Package=TxDb.Hsapiens.UCSC.hg19.knownGene
-Version=3.2.2
-Source=Bioconductor
-Hash=b4c929fa6bdbdd8f157c60021aa94e92
-
-[R/Package/TxDb.LmajorFriedlin.tritryp32.genes]
-Package=TxDb.LmajorFriedlin.tritryp32.genes
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=TxDb.LmajorFriedlin.tritryp32.genes
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=d041fd5a7d5a03b3873269a7798425e6c624183e
-Hash=e291af3d382650261fc5fce86e28dc08
-
-[R/Package/TxDb.TcruziCLBrenerEsmer.tritryp32.genes]
-Package=TxDb.TcruziCLBrenerEsmer.tritryp32.genes
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=TxDb.TcruziCLBrenerEsmer.tritryp32.genes
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=606fae20f36ca0136e183cb1a35ce0557505cce9
-Hash=d87f7fcf9281fc0dd9a1902c8a0c0c43
+Hash=eb7db31d2ce1fbf105db90e2b9c71c3d
 
 [R/Package/WGCNA]
 Package=WGCNA
 Version=1.68
 Source=CRAN
-Hash=bd37a0447f2d6b34bff2559633c0888b
+Hash=aef14dc1d252b5d8fb9564580d175a38
 
 [R/Package/XML]
 Package=XML
 Version=3.98-1.19
 Source=CRAN
-Hash=49adc32e27fdc73936513d17a761dfc6
+Hash=4ae4cc88d584ae405f76f7bfcd5ebeb0
 
 [R/Package/XVector]
 Package=XVector
-Version=0.24.0
+Version=0.22.0
 Source=Bioconductor
-Hash=1e62a9f5fe5c8213c30fabfb2ac103dc
+Hash=57baba96b47c71347651e75e21240734
 
 [R/Package/acepack]
 Package=acepack
 Version=1.4.1
 Source=CRAN
-Hash=c1e222ef27c304517fec1f61d688eb48
-
-[R/Package/annotables]
-Package=annotables
-Version=0.1.91
-Source=GitHub
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=annotables
-RemoteUsername=stephenturner
-RemoteRef=master
-RemoteSha=805a247f2ec9cfe38b744d2146f7a5bd58c6c496
-Hash=17a6e18d40e814e26f87cec8a2e05ec2
+Hash=5f63b1f6354b1e79e1878e465ed2170b
 
 [R/Package/annotate]
 Package=annotate
-Version=1.62.0
+Version=1.60.1
 Source=Bioconductor
-Hash=d57246de8e6915e847d6c507cc753056
+Hash=fe2fff33619f5877fa2045bd20de2810
 
 [R/Package/askpass]
 Package=askpass
 Version=1.1
 Source=CRAN
-Hash=22d589bdbeb821c20dcff25ff641f6fb
+Hash=8cf7584c364ebfbd3b84154a0fd0c18d
 
 [R/Package/assertthat]
 Package=assertthat
 Version=0.2.1
 Source=CRAN
-Hash=47c5d99ca6da06d75f480d96b9f96422
+Hash=2247b53bdc6a80930cc84f85fb0d04e1
 
 [R/Package/backports]
 Package=backports
 Version=1.1.4
 Source=CRAN
-Hash=f8cd17cda96337d3ca8d876d78df1db4
+Hash=41bcc4f617da2138bedeab2949b22319
 
 [R/Package/base64enc]
 Package=base64enc
 Version=0.1-3
 Source=CRAN
-Hash=98474bb1d2468b052cdf9c94abebc97f
+Hash=9e74499ff4cb4233042ed2d5c662423e
 
 [R/Package/biomaRt]
 Package=biomaRt
-Version=2.40.0
+Version=2.38.0
 Source=Bioconductor
-Hash=e6c60e0e4419c2011426d3e358865f32
+Hash=048b3ea2072cb7bd0ceade5e87e01a92
 
 [R/Package/bit]
 Package=bit
 Version=1.1-14
 Source=CRAN
-Hash=b011bda3bbb2c7b9b3024139e91069a3
+Hash=fd28fab46b69714cd892877d10982498
 
 [R/Package/bit64]
 Package=bit64
 Version=0.9-7
 Source=CRAN
-Hash=227688525b8f17b940490c50983d1619
+Hash=9f8528f10006714d6188b3abae478dbc
 
 [R/Package/bitops]
 Package=bitops
 Version=1.0-6
 Source=CRAN
-Hash=6de632bfd4d47e0f1e7969e2a0f6a914
+Hash=5b877c0d718e2324ce03d906f493c464
 
 [R/Package/blob]
 Package=blob
 Version=1.1.1
 Source=CRAN
-Hash=2d9fbd4a05cf169cb4f8d8916bd8f11b
+Hash=822993362414f514630f6f3c1089077f
 
 [R/Package/checkmate]
 Package=checkmate
 Version=1.9.3
 Source=CRAN
-Hash=c26e25c9e76db29d9a9cc009a466ea04
+Hash=357c0da8ffe50e969b2c976132ffae06
 
 [R/Package/cli]
 Package=cli
 Version=1.1.0
 Source=CRAN
-Hash=0b5e29bc7acf6175de5310f9f70ec216
+Hash=eedaa1f888777090cdd93d19cb42fdca
 
 [R/Package/clipr]
 Package=clipr
 Version=0.6.0
 Source=CRAN
-Hash=43b6ce0b24c48657af2c2206661f0a67
+Hash=5490c3928fef3d47b801bb7a0aa00310
 
 [R/Package/cluster]
 Package=cluster
-Version=2.0.8
+Version=2.0.9
 Source=CRAN
-Hash=71b57dd6948530c80a0c66ecb7e5db66
+Hash=ca22007eb02af16221b8b9e9cae34b04
 
 [R/Package/codetools]
 Package=codetools
 Version=0.2-16
 Source=CRAN
-Hash=c3ba04e2aa3a227aa4f3f6daf0ba7abf
+Hash=84a41ec1597d8c9ba70dc20246461577
 
 [R/Package/colorspace]
 Package=colorspace
 Version=1.4-1
 Source=CRAN
-Hash=293d419f775e4871b4cc47cda1ca652c
+Hash=584366d74e7fcc3e960f0ef2e5035e5a
 
 [R/Package/coop]
 Package=coop
 Version=0.6-2
 Source=CRAN
-Hash=8af092c61ec44208806bc3a70538c612
+Hash=cf91d6a92faaf5ec874d9f97bf8a1df8
 
 [R/Package/crayon]
 Package=crayon
 Version=1.3.4
 Source=CRAN
-Hash=f57126a0d24ca978ba32632bb3d26fe4
+Hash=84467438184915ca5bbf3279e1a56b44
 
 [R/Package/crosstalk]
 Package=crosstalk
 Version=1.0.0
 Source=CRAN
-Hash=f5ed225fbbc063078cb712f6743a0ddf
+Hash=6af20710cd4fbb15d35011a15d3c8187
 
 [R/Package/curl]
 Package=curl
 Version=3.3
 Source=CRAN
-Hash=83929b3e5c3bc4f2c95ce7470085f721
+Hash=87a21e98924180f6274919a4b8f66a9a
 
 [R/Package/data.table]
 Package=data.table
 Version=1.12.2
 Source=CRAN
-Hash=9877f56dda88827d0c0e24de3bee3d73
+Hash=81fb3d067d9a28e930293e9d7bf90366
 
 [R/Package/digest]
 Package=digest
 Version=0.6.19
 Source=CRAN
-Hash=becb277fbec47bb47863575682db79ea
+Hash=babe67b3797b493088c24d30c5950cfa
 
 [R/Package/doParallel]
 Package=doParallel
 Version=1.0.14
 Source=CRAN
-Hash=420cf9afa60fb79a1a88e8e88c57033c
+Hash=cc19d812249b85395e102d2b00ff6ab0
 
 [R/Package/dplyr]
 Package=dplyr
 Version=0.8.1
 Source=CRAN
-Hash=d86fc6d81186a16c896186ce680703fe
+Hash=9113b597915157431fc7973b9a02c8c2
 
 [R/Package/dynamicTreeCut]
 Package=dynamicTreeCut
 Version=1.63-1
 Source=CRAN
-Hash=1e254976f18969247f5c5d6db604a69c
+Hash=c79922c2275bb862d99971bddcbdc146
 
 [R/Package/evaluate]
 Package=evaluate
-Version=0.13
+Version=0.14
 Source=CRAN
-Hash=e5383cdfb2c6dfd5a04f91466f3c78e9
+Hash=3692c9c25b1811046a5447b885c8fa72
 
 [R/Package/fansi]
 Package=fansi
 Version=0.4.0
 Source=CRAN
-Hash=a7730510208607abde04cfe3808e78e0
+Hash=ed266fd17df944c53786d83841c4770f
 
 [R/Package/fastcluster]
 Package=fastcluster
 Version=1.1.25
 Source=CRAN
-Hash=ef207520570968e12eddeeda8b65e833
+Hash=1cb23de18266f877781df25d298e4476
 
 [R/Package/fit.models]
 Package=fit.models
 Version=0.5-14
 Source=CRAN
-Hash=61e9f0ae510b27dfad90b373bceb63d3
+Hash=974d856f26f33c3888f263e2238798c7
 
 [R/Package/flashClust]
 Package=flashClust
 Version=1.01-2
 Source=CRAN
-Hash=6d6294bd5a2320bccfede437ba2f4bd9
+Hash=0d041e65230add0e24b7d38fea5b4685
 
 [R/Package/foreach]
 Package=foreach
 Version=1.4.4
 Source=CRAN
-Hash=dbf7619e27fb08d45eda81527dbe60a6
+Hash=ca4a190dc4f4a3585a021c2dac817a71
 
 [R/Package/foreign]
 Package=foreign
 Version=0.8-71
 Source=CRAN
-Hash=6b3b645baf118e30d75bc6d6dcf0b423
+Hash=c161984777772d695c37665bf2d9a692
 
 [R/Package/formatR]
 Package=formatR
 Version=1.6
 Source=CRAN
-Hash=5310d2c9bf850beb7c4a7b93d42a0aa9
+Hash=4b63dd94ceca2628ef9dc15ea5b0bd1e
 
 [R/Package/futile.logger]
 Package=futile.logger
 Version=1.4.3
 Source=CRAN
-Hash=38ed7722d846defde8a6aa07aca346d7
+Hash=a8dbc86c084f07eb0d5e2ee0d023b31c
 
 [R/Package/futile.options]
 Package=futile.options
 Version=1.0.1
 Source=CRAN
-Hash=6c216bb4322a3aa8d8b23c513ad7b459
+Hash=5af8e303f765c2006838a306aa8f06d4
 
 [R/Package/geneLenDataBase]
 Package=geneLenDataBase
-Version=1.20.0
+Version=1.18.0
 Source=Bioconductor
-Hash=bd34889740bb2ae5cdce0e25dda335ce
+Hash=10bcc667525bd0786c152481484d5e42
 
 [R/Package/genefilter]
 Package=genefilter
-Version=1.66.0
+Version=1.64.0
 Source=Bioconductor
-Hash=4e296e4330754c2087baac29188006e5
+Hash=877872fd2a2a75870f88e87a8a7eb2f8
 
 [R/Package/ggplot2]
 Package=ggplot2
 Version=3.1.1
 Source=CRAN
-Hash=924eec7319f30c8e8ce196386bf8b829
+Hash=6ffc923b6010462b2975e99cfc29c3d7
 
 [R/Package/glue]
 Package=glue
 Version=1.3.1
 Source=CRAN
-Hash=55619f06d552401c2d4ffece76499ce2
+Hash=9611ef23b274cfa43c85839a183948dc
 
 [R/Package/goseq]
 Package=goseq
-Version=1.36.0
+Version=1.34.1
 Source=Bioconductor
-Hash=563ca52f01c85fc03cf335c8f55a8100
-
-[R/Package/graph]
-Package=graph
-Version=1.62.0
-Source=Bioconductor
-Hash=7fdae0b54132f611202dafde5b066075
+Hash=840f16c04e03486bbb5981b0289d772a
 
 [R/Package/gridExtra]
 Package=gridExtra
 Version=2.3
 Source=CRAN
-Hash=c3eb9f7194fdc98e2c1fd1f12639e37b
+Hash=664a4d998cd58c6579078447c8495437
 
 [R/Package/gtable]
 Package=gtable
 Version=0.3.0
 Source=CRAN
-Hash=1139982677066ce2ec7c8d6d12f89e3d
+Hash=a20c2bde56b0b3a359ec5e46df1f70af
 
 [R/Package/highr]
 Package=highr
 Version=0.8
 Source=CRAN
-Hash=e55de296dfdda8215e0c3fa0f4c6b84f
+Hash=b065e59a9c15cb94d07d1390f7e0e81c
 
 [R/Package/hms]
 Package=hms
 Version=0.4.2
 Source=CRAN
-Hash=d37946ab470b95d250afae8502c70673
-
-[R/Package/hpgltools]
-Package=hpgltools
-Version=2017.10
-Source=Bioconductor
-RemoteType=github
-RemoteHost=https://api.github.com
-RemoteRepo=hpgltools
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=418834bbc5676220aa19e5332ee83dfbabb96c68
-Hash=f2f383a203c274e14056999ace686722
+Hash=f5f7d85bc2f835b6ed2990d5ba43276d
 
 [R/Package/htmlTable]
 Package=htmlTable
 Version=1.13.1
 Source=CRAN
-Hash=8c1eaba1c73849af9f09af2ff8de1fbd
+Hash=4e51a585dee5d790400b5eaacb4b758d
 
 [R/Package/htmltools]
 Package=htmltools
 Version=0.3.6
 Source=CRAN
-Hash=acbf3a50732562af0ff1fbf1050da7ee
+Hash=b51a95de8992a1ffae14c4152b66f56e
 
 [R/Package/htmlwidgets]
 Package=htmlwidgets
 Version=1.3
 Source=CRAN
-Hash=b192d556875bab99bc3286e88c44e017
+Hash=482765fce33370e4ac314493d9d6c46f
 
 [R/Package/httpuv]
 Package=httpuv
 Version=1.5.1
 Source=CRAN
-Hash=6a37a3704685cc172c9b1737b45ec5a0
+Hash=172a8ab0ae3be5a209f4abcc57ffa91b
 
 [R/Package/httr]
 Package=httr
 Version=1.4.0
 Source=CRAN
-Hash=1127087295caa7e4a0766e21709017ab
-
-[R/Package/igraph]
-Package=igraph
-Version=1.2.4.1
-Source=CRAN
-Hash=d0b60b71c010c791e662aa17e0ce1d0d
+Hash=dacc39276974a4b2342659368a7b623b
 
 [R/Package/impute]
 Package=impute
-Version=1.58.0
+Version=1.56.0
 Source=Bioconductor
-Hash=e80db82739af29a3f70641011c1d42e0
+Hash=e87d40a2ab5ae3e9f0e4614e908a4b8f
 
 [R/Package/iterators]
 Package=iterators
 Version=1.0.10
 Source=CRAN
-Hash=820915a2891e5350f6e3d7dc98f6489f
+Hash=9ff2ae5c32d14699abaf6990cc108945
 
 [R/Package/jsonlite]
 Package=jsonlite
 Version=1.6
 Source=CRAN
-Hash=1527c6ad6c00ff3f0d0a02b01650fd87
+Hash=9098f8f59907a1180f3a2ff469cd67f2
 
 [R/Package/knitr]
 Package=knitr
 Version=1.23
 Source=CRAN
-Hash=4d8581425f8ba4a7a6a7c9d128cea364
+Hash=fb71a84d974a4742ff9fa25ccd1f727d
 
 [R/Package/labeling]
 Package=labeling
 Version=0.3
 Source=CRAN
-Hash=ffa597ca526ba3020eb878a4bc1cb8ab
+Hash=701b56435d3771d042b816ff1abb9944
 
 [R/Package/lambda.r]
 Package=lambda.r
 Version=1.2.3
 Source=CRAN
-Hash=13a8e870954cea1c79e9c4aaa6e2755a
+Hash=b0dae36f0bac70a06f7cabe637f6578b
 
 [R/Package/later]
 Package=later
 Version=0.8.0
 Source=CRAN
-Hash=02c8a11f26574c59f675a8329104af59
+Hash=f903869140080b78237cac16e3bcf869
 
 [R/Package/lattice]
 Package=lattice
 Version=0.20-38
 Source=CRAN
-Hash=0251b49e8f0cc1f8fb68e587c519bae8
+Hash=ab950ea929b83c44eeba6ce00e280f9a
 
 [R/Package/latticeExtra]
 Package=latticeExtra
 Version=0.6-28
 Source=CRAN
-Hash=efa7293c5e639441f723abc2bef037bf
+Hash=495403d95720e2be15f6b4692f97f341
 
 [R/Package/lazyeval]
 Package=lazyeval
 Version=0.2.2
 Source=CRAN
-Hash=c11c47f14490dbed7013c37a1a217cc1
+Hash=a230d72a95d16715973ad2ae0664cfc0
 
 [R/Package/limma]
 Package=limma
-Version=3.40.2
+Version=3.38.3
 Source=Bioconductor
-Hash=dc226b565e788cfd2eb8daaa95bd8a3f
+Hash=172d36e74d8894bb84d017576cde6d39
 
 [R/Package/magrittr]
 Package=magrittr
 Version=1.5
 Source=CRAN
-Hash=c079d05aaae9556f4dbeea615a764871
+Hash=1063976a6affe09eb75fc2927b8d4d9d
 
 [R/Package/markdown]
 Package=markdown
 Version=0.9
 Source=CRAN
-Hash=1ee034245d9f360cb0dfa86ff46a24d9
+Hash=e7eb392ca6f903c18fa50e1fc88d617a
 
 [R/Package/matrixStats]
 Package=matrixStats
 Version=0.54.0
 Source=CRAN
-Hash=89aba06f6e101ff3555d08fc2dd62e29
+Hash=cb36cca4e48db18724c5e5a37cd392d6
 
 [R/Package/memoise]
 Package=memoise
 Version=1.1.0
 Source=CRAN
-Hash=9d6090adf003d75c85245783bcef21b4
+Hash=69e69a93c4521440b176fa74be579356
 
 [R/Package/mgcv]
 Package=mgcv
 Version=1.8-28
 Source=CRAN
-Hash=546b79187d2ce2b5255451684b97dcc4
+Hash=de8359b6f5207608aa399a4e51168d97
 
 [R/Package/mime]
 Package=mime
 Version=0.6
 Source=CRAN
-Hash=00690a1726fcfc215a3e5908bf56802b
+Hash=976803fdcdc85d33c36218b44156e1c1
 
 [R/Package/munsell]
 Package=munsell
 Version=0.5.0
 Source=CRAN
-Hash=d2e295adcf750acbd8a6afd5e15a9c1b
+Hash=504a3c6bd8b5b9c1f4dd9065ead25c9a
 
 [R/Package/mvtnorm]
 Package=mvtnorm
 Version=1.0-10
 Source=CRAN
-Hash=52c41f0e1d72fe8a9be5f2655e0ec243
+Hash=1819e180530a439a3bed4ff731a56a09
 
 [R/Package/nlme]
 Package=nlme
-Version=3.1-139
+Version=3.1-140
 Source=CRAN
-Hash=30cb904ab86ee39ae8a213a6e3d6a44f
+Hash=0a2be7b79fb1816e154c491bb520e3e7
 
 [R/Package/nnet]
 Package=nnet
 Version=7.3-12
 Source=CRAN
-Hash=b5c5b7ecc881b4b4c3ac67ac359426bf
+Hash=c1c971424a8272bf9c4855c3655b4f2f
 
 [R/Package/openssl]
 Package=openssl
 Version=1.3
 Source=CRAN
-Hash=412ae4d99b071b07486b2ca1168d7898
-
-[R/Package/org.Hs.eg.db]
-Package=org.Hs.eg.db
-Version=3.8.2
-Source=Bioconductor
-Hash=c284c1b655515b5be6679792889ac847
-
-[R/Package/org.LmjF.tritryp.db]
-Package=org.LmjF.tritryp.db
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=org.LmjF.tritryp.db
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=53bf482bacb9b1cac1bfe4b712f2a08290d85059
-Hash=7848363994a345224ab9a8ee78afe714
-
-[R/Package/org.TcCLB.esmer.tritryp.db]
-Package=org.TcCLB.esmer.tritryp.db
-Version=32.0
-Source=Bioconductor
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=org.TcCLB.esmer.tritryp.db
-RemoteUsername=elsayed-lab
-RemoteRef=master
-RemoteSha=5c760e71572df3879f0a30c75e79eadde34d571f
-Hash=5b1f22ec1da7656ae9bc65da20fd8a14
+Hash=54c10fdc44f59c4a2ee530ff8bc0073b
 
 [R/Package/parallelDist]
 Package=parallelDist
 Version=0.2.4
 Source=CRAN
-Hash=a4c4b3e77f91d97e6e02b3428acc32c0
+Hash=7584ea77f36719f1682e68daf427e23c
 
 [R/Package/pcaPP]
 Package=pcaPP
 Version=1.9-73
 Source=CRAN
-Hash=28e69e30cf803e43f28ed36d56026720
+Hash=38c3838fe7378260842a0d4e714a494f
 
 [R/Package/pillar]
 Package=pillar
-Version=1.4.0
+Version=1.4.1
 Source=CRAN
-Hash=17ebe006aab7f195b04026156291b98e
+Hash=6edc0fd6364264e11ed7158bc8efaa92
 
 [R/Package/pkgconfig]
 Package=pkgconfig
 Version=2.0.2
 Source=CRAN
-Hash=429340caafe5e22eb0fcf89cd170b4db
+Hash=cb8f27ad9e671904636c04acd56131f0
 
 [R/Package/plogr]
 Package=plogr
 Version=0.2.0
 Source=CRAN
-Hash=e33de17b3d41d70c32e716536104d3fb
+Hash=a99927b0b9c09008dd207da128bb050f
 
 [R/Package/plyr]
 Package=plyr
 Version=1.8.4
 Source=CRAN
-Hash=c3d1aded87079c209602e755d6341fd1
+Hash=d28b855c4fa5069e95647c5afb7307a4
 
 [R/Package/png]
 Package=png
 Version=0.1-7
 Source=CRAN
-Hash=1d47c5fdee296aa821438c0cadedaab6
+Hash=ef32889065e818c2331e9f43b7e20bac
 
 [R/Package/preprocessCore]
 Package=preprocessCore
-Version=1.46.0
+Version=1.44.0
 Source=Bioconductor
-Hash=c9a0089cef620c72643e3242ca4b2f0b
+Hash=2b5d81bf33ee5a9e854134bf8425e527
 
 [R/Package/prettyunits]
 Package=prettyunits
 Version=1.0.2
 Source=CRAN
-Hash=0acfa2bf224e49369bde27b7523aa660
+Hash=d6f0227d29f17a4a8a73bbad025adab5
 
 [R/Package/printr]
 Package=printr
 Version=0.1
 Source=CRAN
-Hash=31537ec7d7463a9903e21636fc63f2c9
+Hash=b85967eb2c1e49763186bf45ebbf84bc
 
 [R/Package/progress]
 Package=progress
 Version=1.2.2
 Source=CRAN
-Hash=94ceabeec671b0e1df09992868867edd
+Hash=11a8e4fda623ee20d4bb94c8ba1ca1cc
 
 [R/Package/promises]
 Package=promises
 Version=1.0.1
 Source=CRAN
-Hash=fe0029f2ba52818c41d1990a814f34fa
+Hash=7288c7de35370404d6c2bcfabac48c3c
 
 [R/Package/purrr]
 Package=purrr
 Version=0.3.2
 Source=CRAN
-Hash=896b57f02c12b74c78945f0e2202e526
+Hash=27e0729a3fe0e9a66f6a53f677dda4f8
 
 [R/Package/readr]
 Package=readr
 Version=1.3.1
 Source=CRAN
-Hash=877d4a67fac3a3c4d2361610c3c2a483
+Hash=2611ed0db33c461567329314edd04bc5
 
 [R/Package/reshape2]
 Package=reshape2
 Version=1.4.3
 Source=CRAN
-Hash=036286e358984519ef02581be2bd92b8
+Hash=431389bf4e0708ebafb1dec474f3cba8
 
 [R/Package/rlang]
 Package=rlang
 Version=0.3.4
 Source=CRAN
-Hash=dd580c9a334b9179881d5dc4f931acaf
+Hash=85a729149027f3e25020e28d3d59f3c5
 
 [R/Package/rmarkdown]
 Package=rmarkdown
 Version=1.13
 Source=CRAN
-Hash=9cefa4f5f37ded7803bba640c49cec1d
+Hash=dd0e98534858c6fae819e05f6c6da13e
 
 [R/Package/robust]
 Package=robust
 Version=0.4-18
 Source=CRAN
-Hash=7b35430d358d3a8b5f6682b8ae4c5d5c
+Hash=05d5a51e93034052a5a02c0eaff0d178
 
 [R/Package/robustbase]
 Package=robustbase
 Version=0.93-5
 Source=CRAN
-Hash=bba24e76b932779c14602bb61cab672c
+Hash=bf10da9024120a1af7db4a4fb1b0ac9f
 
 [R/Package/rpart]
 Package=rpart
 Version=4.1-15
 Source=CRAN
-Hash=1a193befff417ecda456c99c54baafd2
+Hash=2ccc82572c1e4bbc9c69eba70439d226
 
 [R/Package/rrcov]
 Package=rrcov
 Version=1.4-7
 Source=CRAN
-Hash=799eaa590d234026b765a61f62be1ef1
+Hash=ff888b3c453a85cf27def4be1a117fd4
 
 [R/Package/rstudioapi]
 Package=rstudioapi
 Version=0.10
 Source=CRAN
-Hash=0a9a57ac8bc27cafe9a3904deb2e267b
+Hash=7017924bdb0eb5bc313f4dae2352e65a
 
 [R/Package/rtracklayer]
 Package=rtracklayer
-Version=1.44.0
+Version=1.42.2
 Source=Bioconductor
-Hash=cccac065d1d3e0ab36cabf85f25e7811
+Hash=3a9a3345af77f56f4163840edc4f67e2
 
 [R/Package/scales]
 Package=scales
 Version=1.0.0
 Source=CRAN
-Hash=0a7b764f1e0d66185ace2758c3353855
+Hash=ea57b8fae1b73f8a7fc6699d6920c4fc
 
 [R/Package/shiny]
 Package=shiny
 Version=1.3.2
 Source=CRAN
-Hash=633cf5d780c566e187c695bca6121310
+Hash=c7492473757ae2186b14dfefc9c491c6
 
 [R/Package/snow]
 Package=snow
 Version=0.4-3
 Source=CRAN
-Hash=2f7a7be16ce4825abefdea4dc0c9fea8
+Hash=f991043400081761aa8ea61074df9186
 
 [R/Package/sourcetools]
 Package=sourcetools
 Version=0.1.7
 Source=CRAN
-Hash=4f191ca8ae69d8db79e2d116458a9b39
+Hash=78d8b58ebdba4de65b6d07770ae18f8c
 
 [R/Package/stringi]
 Package=stringi
 Version=1.4.3
 Source=CRAN
-Hash=196830ccb8e4ff492b37062d19c3c9b1
+Hash=173c63cf8b9f876dba8b2984ce7a65d7
 
 [R/Package/stringr]
 Package=stringr
 Version=1.4.0
 Source=CRAN
-Hash=568b942ad8065463d9beb45c212e4089
+Hash=813b06afd70ca31c1071395d49346b89
 
 [R/Package/survival]
 Package=survival
 Version=2.44-1.1
 Source=CRAN
-Hash=21f6ff555d096e5a2e11a4434ad1a41c
+Hash=4c474c1fb121231f818484befeae8e5f
 
 [R/Package/sva]
 Package=sva
-Version=3.32.1
+Version=3.30.1
 Source=Bioconductor
-Hash=fd6a5b14270d3440fefb199ada97ac31
+Hash=4ac7f9fae4ab5ce643f5589833a37ced
 
 [R/Package/sys]
 Package=sys
 Version=3.2
 Source=CRAN
-Hash=0c43bba658518eeb02b857c8e82de3ee
-
-[R/Package/tftargets]
-Package=tftargets
-Version=1.3
-Source=GitHub
-RemoteType=github
-RemoteHost=api.github.com
-RemoteRepo=tftargets
-RemoteUsername=slowkow
-RemoteRef=master
-RemoteSha=66509de96ff39a3771a99cf38d83f138d56aadf1
-Hash=90c2428bd5b480d61b65108e1e231388
+Hash=fbd1f0866d1755b814c741006ef39a44
 
 [R/Package/tibble]
 Package=tibble
 Version=2.1.1
 Source=CRAN
-Hash=d9ba62e3a7d5bc3a30a4361fd0e769dc
+Hash=3aa18e25ee32962a384e2a5a83273f1e
 
 [R/Package/tidyselect]
 Package=tidyselect
 Version=0.2.5
 Source=CRAN
-Hash=cb4e7e81a360b877572804e9a6311375
+Hash=40aceb5150e00cfe7a4999b4672cf614
 
 [R/Package/tinytex]
 Package=tinytex
 Version=0.13
 Source=CRAN
-Hash=adbccf7f70e80942f1f844f054c6dafe
+Hash=3fa762b0c34186d70b2a51ed2bdcd10c
 
 [R/Package/utf8]
 Package=utf8
 Version=1.1.4
 Source=CRAN
-Hash=dbacd54ef408a11a83b9c0558d897970
+Hash=6399c80981358af7b39c217c72f22785
 
 [R/Package/vctrs]
 Package=vctrs
 Version=0.1.0
 Source=CRAN
-Hash=ec11287480e54b985f9ff923bd48b14a
+Hash=5e43e0ea0471514e553e8d9e4f8d4960
 
 [R/Package/viridis]
 Package=viridis
 Version=0.5.1
 Source=CRAN
-Hash=a5b8038001874f8e80ee8e341f2984a3
+Hash=843854d5994486b476793d01830a1cd4
 
 [R/Package/viridisLite]
 Package=viridisLite
 Version=0.3.0
 Source=CRAN
-Hash=5045453f21c0128c65c2a10c776b3e47
+Hash=732c3dabc42bce1fafb5d286184804c6
 
 [R/Package/withr]
 Package=withr
 Version=2.1.2
 Source=CRAN
-Hash=e0f31d2ce08a4adfeebe9b0b3fd8f5d4
+Hash=844aae4b78fac8f6ed2541cde1facdb3
 
 [R/Package/xfun]
 Package=xfun
 Version=0.7
 Source=CRAN
-Hash=d1a809dfd21949fcb1f0f5cd6d375f0d
+Hash=56d3e9bd4251a3c01c65b0b959b0c9fc
 
 [R/Package/xtable]
 Package=xtable
 Version=1.8-4
 Source=CRAN
-Hash=742aa6defce9a604d675b90812e1e588
+Hash=e9e84aa1396826d8671e25862ced7763
 
 [R/Package/yaml]
 Package=yaml
 Version=2.2.0
 Source=CRAN
-Hash=1cf8dfe48ca1f014d5bdad603950c414
+Hash=9db4f908886820b37f76b5ecc52c76e6
 
 [R/Package/zeallot]
 Package=zeallot
 Version=0.1.0
 Source=CRAN
-Hash=c73fb5ce649cdea435146265a0886df8
+Hash=51d0973c2f935cae2e50e6687e2bd90b
 
 [R/Package/zlibbioc]
 Package=zlibbioc
-Version=1.30.0
+Version=1.28.0
 Source=Bioconductor
-Hash=b087bbbd1376de6688b31b92744dc564
+Hash=eb3d8c30d3738fc365c1cc050ec59247
 
